@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ReportBuilderComponent } from './report-builder.component';
+import { ReportBuilderComponent } from './report-builder/report-builder.component';
 
 @NgModule({
   declarations: [
