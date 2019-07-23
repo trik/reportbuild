@@ -1,4 +1,13 @@
-.widget {
+.widget-title {
+	display: inline-block;
+	padding: 3px;
+	padding-top: 0;
+	font-size: 15px;
+}
+
+.widget,
+app-report,
+app-layout {
 	display: block;
 	width: 100%;
 	background-color: #bcf;
@@ -9,5 +18,5 @@
 	width: 100%;
 	min-height: 100px;
 	background-color: white;
-	padding: 2px;
+	padding: 4px;
 }
