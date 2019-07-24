@@ -1,17 +1,19 @@
 .widget-title {
-	display: inline-block;
+	display: block;
 	padding: 3px;
 	padding-top: 0;
 	font-size: 15px;
+	background-color: #bcf;
 }
 
 .widget,
 app-report,
 app-layout {
-	display: block;
+	display: grid;
+	grid-template-rows: 20px auto 25px;
 	width: 100%;
-	background-color: #bcf;
-	padding: 3px;
+	height: 100%;
+	border: 3px solid #bcf;
 }
 
 .widget-content {

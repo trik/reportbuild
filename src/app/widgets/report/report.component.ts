@@ -10,6 +10,7 @@ import { LayoutComponent } from '../layout/layout.component';
 })
 export class ReportComponent implements AfterViewInit {
   private layoutFactory: ComponentFactory<LayoutComponent>;
+  public test = 'helloooo';
 
   @ViewChild('content', {read: ViewContainerRef})
   content: ViewContainerRef;
@@ -20,6 +21,14 @@ export class ReportComponent implements AfterViewInit {
 
   ngAfterViewInit() {
   	this.content.createComponent(this.layoutFactory);
+  }
+
+  addWidget(wid: number) {
+    console.log(wid);
+  }
+
+  public serialize(): string {
+    return '{ report }';
   }
 
 }

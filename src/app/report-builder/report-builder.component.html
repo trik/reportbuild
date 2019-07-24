@@ -1,15 +1,21 @@
-<app-report style="overflow-y: scroll;"></app-report>
-
-<div class="widget">
-  <span class="widget-title">widget properties</span>
-
-  <div class="widget-content"></div>
+<div style="overflow-y: scroll;">
+  <app-report></app-report>
 </div>
 
-<div class="widget" style="overflow-y: scroll;">
-  <span class="widget-title">output</span>
+<div class="window">
+  <span class="window-title">widget properties</span>
 
-  <div class="widget-content" style="min-height: 300px;"></div>
+  <div class="window-content"></div>
+</div>
+
+<div class="window">
+  <span class="window-title">output</span>
+
+  <div class="window-content">
+  	<textarea class="output-textarea"
+  	  readonly="true">{{ report ? report.serialize() : '' }}
+    </textarea>
+  </div>
 </div>
 
 <div class="super">

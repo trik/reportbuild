@@ -1,0 +1,13 @@
+app-add-widget-button {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+app-add-widget-button select {
+	height: 20px;
+	background-color: #eee;
+	border: 1px dashed #aaa;
+	border-radius: 4px;
+	outline: none;
+}

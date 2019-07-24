@@ -8,5 +8,6 @@ export const WidgetType = {
   Map: 6,
   Column: 7,
   Formula: 8,
-  ImageContainer: 9
+  ImageContainer: 9,
+  LENGTH: 10
 };
