@@ -1,0 +1,14 @@
+app-page-break {
+	position: relative;
+	display: flex;
+	padding: 4px;
+}
+
+app-page-break > hr {
+	width: 50%;
+}
+
+app-page-break > span {
+	width: 105px;
+	text-align: center;
+}
