@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-import { WidgetType } from '../widget-type';
+import { WidgetType } from '../widget.interface';
 
 @Component({
   selector: 'app-add-widget-button',

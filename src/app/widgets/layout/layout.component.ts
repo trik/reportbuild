@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { WidgetType } from '../widget-type';
+import { WidgetType } from '../widget.interface';
 
 @Component({
   selector: 'app-layout',

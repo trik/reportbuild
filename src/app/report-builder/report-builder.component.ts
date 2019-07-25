@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { WidgetFactoryService } from '../widgets/widget-factory.service';
+import { Widget } from '../widgets/widget.interface';
 
 @Component({
   selector: 'app-report-builder',
@@ -10,7 +11,7 @@ import { WidgetFactoryService } from '../widgets/widget-factory.service';
 export class ReportBuilderComponent {
 
   @ViewChild('contentPoint', {read: ViewContainerRef}) contentPoint: ViewContainerRef;
-  content: any[] = [];
+  content: Widget[] = [];
 
   constructor(private factoryService: WidgetFactoryService) {}
 
@@ -20,7 +21,7 @@ export class ReportBuilderComponent {
     this.content.push(compRef.instance);
   }
 
-  public toObject(): any {
+  toObject(): any {
     return {
       header: {},
       content: this.content.map(w => w.toObject()),
