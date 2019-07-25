@@ -6,6 +6,8 @@ app-page-break {
 
 app-page-break > hr {
 	width: 50%;
+	border-top: none;
+	border-bottom: 1px dashed #222;
 }
 
 app-page-break > span {
