@@ -1,6 +1,5 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
-import { ReportComponent } from '../widgets/report/report.component';
 import { WidgetFactoryService } from '../widgets/widget-factory.service';
 
 @Component({
