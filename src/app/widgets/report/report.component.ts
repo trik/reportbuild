@@ -1,30 +1,21 @@
-import { Component, AfterViewInit, ViewChild, ComponentFactory,
-  ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
-import { LayoutComponent } from '../layout/layout.component';
+import { WidgetFactoryService } from '../widget-factory.service';
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss']
 })
-export class ReportComponent implements AfterViewInit {
-  private layoutFactory: ComponentFactory<LayoutComponent>;
+export class ReportComponent {
   public test = 'helloooo';
 
-  @ViewChild('content', {read: ViewContainerRef})
-  content: ViewContainerRef;
+  @ViewChild('content', {read: ViewContainerRef}) content: ViewContainerRef;
 
-  constructor(private factoryResolver: ComponentFactoryResolver) {
-  	this.layoutFactory = this.factoryResolver.resolveComponentFactory(LayoutComponent);
-  }
-
-  ngAfterViewInit() {
-  	this.content.createComponent(this.layoutFactory);
-  }
+  constructor(private factoryService: WidgetFactoryService) {}
 
   addWidget(wid: number) {
-    console.log(wid);
+    this.content.createComponent(this.factoryService.factories[wid]);
   }
 
   public serialize(): string {
