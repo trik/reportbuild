@@ -10,16 +10,23 @@ import { WidgetFactoryService } from '../widget-factory.service';
 export class ReportComponent {
   public test = 'helloooo';
 
-  @ViewChild('content', {read: ViewContainerRef}) content: ViewContainerRef;
+  @ViewChild('contentPoint', {read: ViewContainerRef}) contentPoint: ViewContainerRef;
+  content: any[] = [];
 
   constructor(private factoryService: WidgetFactoryService) {}
 
   addWidget(wid: number) {
-    this.content.createComponent(this.factoryService.factories[wid]);
+    const factory = this.factoryService.factories[wid];
+    const compRef = this.contentPoint.createComponent(factory);
+    this.content.push(compRef.instance);
   }
 
-  public serialize(): string {
-    return '{ report }';
+  public toObject(): any {
+    return {
+      header: {},
+      content: this.content.map(w => w.toObject()),
+      footer: {},
+    };
   }
 
 }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { WidgetType } from '../widget-type';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  toObject(): any {
+  	return { widgetType: WidgetType.Layout }
   }
 
 }

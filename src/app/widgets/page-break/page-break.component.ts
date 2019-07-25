@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { WidgetType } from '../widget-type';
 
 @Component({
   selector: 'app-page-break',
   templateUrl: './page-break.component.html',
   styleUrls: ['./page-break.component.scss']
 })
-export class PageBreakComponent implements OnInit {
+export class PageBreakComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  toObject(): any {
+  	return { widgetType: WidgetType.PageBreak }
   }
 
 }
