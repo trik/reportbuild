@@ -1,3 +1,11 @@
+app-report {
+	overflow-y: scroll;
+}
+
+app-report > * {
+	margin-bottom: 4px;
+}
+
 .widget-title {
 	display: block;
 	padding: 3px;
@@ -6,7 +14,6 @@
 }
 
 .widget,
-app-report,
 app-layout {
 	display: flex;
 	flex-direction: column;
@@ -17,7 +24,7 @@ app-layout {
 
 .widget-content {
 	width: 100%;
-	min-height: 100px;
+	min-height: 70px;
 	background-color: white;
 	padding: 4px;
 	padding-bottom: 0;
