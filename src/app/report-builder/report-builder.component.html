@@ -1,20 +1,25 @@
-<app-report></app-report>
-
-<div class="window">
-  <span class="window-title">widget properties</span>
-
-  <div class="window-content"></div>
-</div>
-
-<div class="window">
-  <span class="window-title">output</span>
-
-  <div class="window-content">
-  	<textarea class="output-textarea"
-  	  readonly="true">{{ report?.toObject() | json }}</textarea>
+<div class="widget">
+  <span class="widget-title">header</span>
+  <div class="widget-content">
+    <ng-template #headerContentPoint></ng-template>
   </div>
 </div>
 
-<div class="super">
-  <h1>the super <br> ajf report <br> builder</h1>
+<div class="widget">
+  <span class="widget-title">content</span>
+  <div class="widget-content">
+    <ng-template #contentPoint></ng-template>
+  </div>
+  <app-add-widget-button (widgetSelected)="addWidget($event)"></app-add-widget-button>
 </div>
+
+<div class="widget">
+  <span class="widget-title">footer</span>
+  <div class="widget-content">
+    <ng-template #footerContentPoint></ng-template>
+  </div>
+</div>
+
+<span class="output-label">Output:</span>
+<textarea rows="15" class="output-textarea"
+  readonly="true">{{ toObject() | json }}</textarea>

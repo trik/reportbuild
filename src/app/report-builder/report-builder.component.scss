@@ -1,37 +1,44 @@
 app-report-builder {
 	position: relative;
+	display: block;
 	width: 100%;
 	height: 100%;
 	
 	font-family: Arial, sans-serif;
 	font-size: 15px;
-
-	display: grid;
-	grid-template-columns: auto 250px;
-	grid-template-rows: auto 200px;
-	grid-gap: 5px;
 }
 
-.window-title {
+.widget,
+app-layout {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border: 3px solid #bcf;
+	border-radius: 4px;
+}
+
+.widget-title {
 	display: block;
 	padding: 3px;
 	padding-top: 0;
 	background-color: #bcf;
 }
 
-.window {
-	display: grid;
-	grid-template-rows: 20px auto;
+.widget-content {
 	width: 100%;
-	height: 100%;
-	border: 3px solid #bcf;
-}
-
-.window-content {
-	width: 100%;
-	min-height: 100px;
+	min-height: 70px;
 	background-color: white;
 	padding: 4px;
+	padding-bottom: 0;
+}
+
+app-report-builder > *, .widget-content > * {
+	margin-bottom: 4px;
+}
+
+.output-label {
+	display: block;
+	padding: 7px 4px;
 }
 
 .output-textarea {
@@ -39,15 +46,5 @@ app-report-builder {
 	resize: none;
 	outline: none;
 	width: 100%;
-	height: 100%;
-	font-family: "Lucida Console", Monaco, monospace;
-}
-
-.super {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	color: #222;
 	font-family: "Lucida Console", Monaco, monospace;
 }
