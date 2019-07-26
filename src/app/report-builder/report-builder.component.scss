@@ -36,6 +36,12 @@ app-column:hover {
 	> .widget-title {
 		background-color: #aeb;
 	}
+	> app-content > .add-widget-button {
+		visibility: visible;
+	}
+	> .layout-content > .add-column-button {
+		visibility: visible;
+	}
 }
 
 .output-label {
