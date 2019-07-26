@@ -21,8 +21,11 @@ export class LayoutComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.addColumn();
-    this.addColumn();
+    // The timeout avoids expressionChangedAfterItHasBeenCheckedError:
+    setTimeout( () => {
+      this.addColumn();
+      this.addColumn();
+    }, 100);
   }
 
   addColumn() {
