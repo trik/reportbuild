@@ -18,15 +18,24 @@ app-column {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	border: 3px solid #bcf;
 	border-radius: 4px;
+	border: 3px solid #abf;
 }
 
 .widget-title {
 	display: block;
 	padding: 3px;
 	padding-top: 0;
-	background-color: #bcf;
+	background-color: #abf;
+}
+
+.widget:hover,
+app-layout:hover,
+app-column:hover {
+	border-color: #aeb;
+	> .widget-title {
+		background-color: #aeb;
+	}
 }
 
 .output-label {
