@@ -1,5 +1,5 @@
 import { Component, ComponentFactory, ComponentFactoryResolver,
-  ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
+  ViewChild, ViewContainerRef, AfterContentInit } from '@angular/core';
 
 import { WidgetType } from '../widget.interface';
 import { ColumnComponent } from '../column/column.component';
@@ -9,7 +9,7 @@ import { ColumnComponent } from '../column/column.component';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements AfterViewInit {
+export class LayoutComponent implements AfterContentInit {
 
   columnFactory: ComponentFactory<ColumnComponent>;
 
@@ -20,7 +20,7 @@ export class LayoutComponent implements AfterViewInit {
     this.columnFactory = factoryResolver.resolveComponentFactory(ColumnComponent);
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.addColumn();
     this.addColumn();
   }
