@@ -6,6 +6,7 @@ import { ReportBuilderComponent } from './report-builder/report-builder.componen
 import { LayoutComponent } from './widgets/layout/layout.component';
 import { PageBreakComponent } from './widgets/page-break/page-break.component';
 import { ContentComponent } from './widgets/content/content.component';
+import { ColumnComponent } from './widgets/column/column.component';
 
 @NgModule({
   declarations: [
@@ -13,13 +14,14 @@ import { ContentComponent } from './widgets/content/content.component';
     ReportBuilderComponent,
     LayoutComponent,
     PageBreakComponent,
-    ContentComponent
+    ContentComponent,
+    ColumnComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  entryComponents: [LayoutComponent, PageBreakComponent],
+  entryComponents: [LayoutComponent, PageBreakComponent, ColumnComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

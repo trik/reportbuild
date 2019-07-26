@@ -5,7 +5,7 @@ app-report-builder {
 	height: 100%;
 	
 	font-family: Arial, sans-serif;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 app-report-builder > * {
@@ -13,7 +13,8 @@ app-report-builder > * {
 }
 
 .widget,
-app-layout {
+app-layout,
+app-column {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -29,11 +30,13 @@ app-layout {
 }
 
 .output-label {
+	font-size: 15px;
 	display: block;
 	padding: 7px 4px;
 }
 
 .output-textarea {
+	font-size: 15px;
 	border: none;
 	resize: none;
 	outline: none;
