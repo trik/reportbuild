@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReportBuilderComponent } from './report-builder/report-builder.component';
 import { LayoutComponent } from './widgets/layout/layout.component';
-import { AddWidgetButtonComponent } from './widgets/add-widget-button/add-widget-button.component';
 import { PageBreakComponent } from './widgets/page-break/page-break.component';
+import { ContentComponent } from './widgets/content/content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportBuilderComponent,
     LayoutComponent,
-    AddWidgetButtonComponent,
-    PageBreakComponent
+    PageBreakComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule

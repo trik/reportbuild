@@ -8,6 +8,10 @@ app-report-builder {
 	font-size: 15px;
 }
 
+app-report-builder > * {
+	margin-bottom: 4px;
+}
+
 .widget,
 app-layout {
 	display: flex;
@@ -22,18 +26,6 @@ app-layout {
 	padding: 3px;
 	padding-top: 0;
 	background-color: #bcf;
-}
-
-.widget-content {
-	width: 100%;
-	min-height: 70px;
-	background-color: white;
-	padding: 4px;
-	padding-bottom: 0;
-}
-
-app-report-builder > *, .widget-content > * {
-	margin-bottom: 4px;
 }
 
 .output-label {

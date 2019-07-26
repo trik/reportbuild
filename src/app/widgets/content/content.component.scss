@@ -1,0 +1,30 @@
+app-content {
+	display: block;
+	width: 100%;
+	background-color: white;
+	padding: 4px;
+	padding-bottom: 0;
+}
+
+.content-body {
+	min-height: 70px;
+}
+
+.content-body > * {
+	margin-bottom: 4px;
+}
+
+.add-widget-button {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-bottom: 4px;
+}
+
+.add-widget-button > select {
+	height: 20px;
+	background-color: #eee;
+	border: 1px dashed #aaa;
+	border-radius: 4px;
+	outline: none;
+}

@@ -8,9 +8,21 @@ export enum WidgetType {
   Map,
   Column,
   Formula,
-  ImageContainer,
-  LENGTH
+  ImageContainer
 };
+
+export const WidgetName = [
+  'Layout',
+  'Page Break',
+  'Image',
+  'Text',
+  'Chart',
+  'Table',
+  'Map',
+  'Column',
+  'Formula',
+  'Image Container'
+];
 
 export interface Widget {
   toObject(): any;
