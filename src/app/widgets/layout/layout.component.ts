@@ -31,7 +31,11 @@ export class LayoutComponent implements AfterContentInit {
   }
 
   toObject(): any {
-  	return { widgetType: WidgetType.Layout }
+  	return {
+      widgetType: WidgetType.Layout,
+      columns: this.content.map(_ => -1),
+      content: this.content.map(col => col.toObject()),
+    };
   }
 
 }

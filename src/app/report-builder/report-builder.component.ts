@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
-import { ContentComponent } from '../widgets/content/content.component';
+import { Widget } from '../widgets/widget.interface';
 
 @Component({
   selector: 'app-report-builder',
@@ -9,9 +9,10 @@ import { ContentComponent } from '../widgets/content/content.component';
 })
 export class ReportBuilderComponent {
 
-  @ViewChild('header')  header:  ContentComponent;
-  @ViewChild('content') content: ContentComponent;
-  @ViewChild('footer')  footer:  ContentComponent;
+  // ContentComponents are viewed as Widgets to avoid circular dependencies:
+  @ViewChild('header')  header:  Widget;
+  @ViewChild('content') content: Widget;
+  @ViewChild('footer')  footer:  Widget;
 
   constructor() {}
 
