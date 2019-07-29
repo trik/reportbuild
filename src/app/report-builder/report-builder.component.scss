@@ -1,6 +1,7 @@
 app-report-builder {
 	position: relative;
 	display: flex;
+	flex-direction: column;
 	width: 100%;
 	height: 100%;
 	
@@ -13,6 +14,7 @@ app-report-builder {
 	height: 100%;
 	margin-right: 4px;
 	padding-right: 4px;
+	margin-bottom: 4px;
 	overflow-y: scroll;
 }
 
@@ -52,16 +54,17 @@ app-column:hover {
 	}
 }
 
-.output-window {
-	width: 450px;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
+.a-button {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
-.output-window > span {
-	display: block;
-	padding: 7px 4px;
+.output-window {
+	border-color: #ec4 !important;
+}
+
+.output-window > .widget-title {
+	background-color: #ec4 !important;
 }
 
 .output-window > textarea {
@@ -69,6 +72,6 @@ app-column:hover {
 	resize: none;
 	outline: none;
 	width: 100%;
-	height: 100%;
+	height: 300px;
 	font-family: "Lucida Console", Monaco, monospace;
 }

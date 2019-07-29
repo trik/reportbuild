@@ -15,7 +15,12 @@
   </div>
 </div>
 
-<div class="output-window">
-  <span>Output:</span>
-  <textarea readonly="true">{{ toObject() | json }}</textarea>
+<div class="output-window widget">
+  <span class="widget-title">
+    Output - <a class="a-button" (click)="showOutput = !showOutput">
+      {{ showOutput ? 'hide' : 'show' }}
+    </a>
+  </span>
+  <textarea [style.display]="showOutput ? 'block' : 'none'"
+    readonly="true">{{ toObject() | json }}</textarea>
 </div>
