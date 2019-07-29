@@ -1,6 +1,6 @@
 app-report-builder {
 	position: relative;
-	display: block;
+	display: flex;
 	width: 100%;
 	height: 100%;
 	
@@ -8,7 +8,15 @@ app-report-builder {
 	font-size: 13px;
 }
 
-app-report-builder > * {
+.editor {
+	width: 100%;
+	height: 100%;
+	margin-right: 4px;
+	padding-right: 4px;
+	overflow-y: scroll;
+}
+
+.editor > * {
 	margin-bottom: 4px;
 }
 
@@ -20,12 +28,12 @@ app-column {
 	width: 100%;
 	border-radius: 4px;
 	border: 3px solid #abf;
+	border-top: none;
 }
 
 .widget-title {
 	display: block;
-	padding: 3px;
-	padding-top: 0;
+	padding: 0 3px;
 	background-color: #abf;
 }
 
@@ -44,17 +52,23 @@ app-column:hover {
 	}
 }
 
-.output-label {
-	font-size: 15px;
+.output-window {
+	width: 450px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.output-window > span {
 	display: block;
 	padding: 7px 4px;
 }
 
-.output-textarea {
-	font-size: 15px;
+.output-window > textarea {
 	border: none;
 	resize: none;
 	outline: none;
 	width: 100%;
+	height: 100%;
 	font-family: "Lucida Console", Monaco, monospace;
 }
