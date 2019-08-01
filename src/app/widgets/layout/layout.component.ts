@@ -1,8 +1,9 @@
 import { Component, ComponentFactory, ComponentFactoryResolver,
-  ViewChild, ViewContainerRef, AfterContentInit } from '@angular/core';
+  ViewChild, ViewContainerRef, AfterContentInit, Optional } from '@angular/core';
 
 import { WidgetType } from '../widget.interface';
 import { ColumnComponent } from '../column/column.component';
+import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 
 @Component({
   selector: 'app-layout',
@@ -16,7 +17,7 @@ export class LayoutComponent implements AfterContentInit {
   @ViewChild('contentBody', {read: ViewContainerRef}) contentBody: ViewContainerRef;
   content: ColumnComponent[] = [];
 
-  constructor(factoryResolver: ComponentFactoryResolver) {
+  constructor(@Optional() public builder: ReportBuilderComponent, factoryResolver: ComponentFactoryResolver) {
     this.columnFactory = factoryResolver.resolveComponentFactory(ColumnComponent);
   }
 

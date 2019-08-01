@@ -12,7 +12,7 @@ export class ColumnComponent {
 
   @ViewChild('content') content: Widget;
 
-  constructor(@Optional() private builder: ReportBuilderComponent) { }
+  constructor(@Optional() public builder: ReportBuilderComponent) { }
 
   toObject(): any {
     return {
