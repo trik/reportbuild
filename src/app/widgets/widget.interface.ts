@@ -24,6 +24,11 @@ export const WidgetName = [
   'Image Container'
 ];
 
-export interface Widget {
+// toObject() | json is used to serialize the report and its widgets.
+export interface ToObject {
   toObject(): any;
+};
+
+export interface Widget extends ToObject {
+
 };
