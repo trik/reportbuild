@@ -1,5 +1,13 @@
-<span class="widget-title">Widget properties</span>
+<div class="widget">
+  <span class="widget-title">Widget properties</span>
 
-<div *ngIf="!widget">No widget selected</div>
+  <div class="bar-content" *ngIf="!widget">No widget selected</div>
+  <div class="bar-content" *ngIf="widget">something selected</div>
+</div>
 
-<div *ngIf="widget">something selected</div>
+<div class="widget">
+  <span class="widget-title">Widget styles</span>
+
+  <div class="bar-content" *ngIf="!widget">No widget selected</div>
+  <div class="bar-content" *ngIf="widget">something selected</div>
+</div>
