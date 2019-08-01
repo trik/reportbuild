@@ -24,3 +24,5 @@
   <textarea [style.display]="showOutput ? 'block' : 'none'"
     readonly="true">{{ toObject() | json }}</textarea>
 </div>
+
+<app-properties-bar [widget]="selectedWidget"></app-properties-bar>

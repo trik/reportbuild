@@ -4,6 +4,7 @@ app-report-builder {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	padding-right: 304px; // space for properties bar
 	
 	font-family: Arial, sans-serif;
 	font-size: 13px;
@@ -23,6 +24,7 @@ app-report-builder {
 }
 
 .widget,
+app-properties-bar,
 app-layout,
 app-column {
 	display: flex;
@@ -36,6 +38,7 @@ app-column {
 .widget-title {
 	display: block;
 	padding: 0 3px;
+	padding-bottom: 1px;
 	background-color: #abf;
 }
 
@@ -74,4 +77,5 @@ app-column:hover {
 	width: 100%;
 	height: 300px;
 	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 13px;
 }

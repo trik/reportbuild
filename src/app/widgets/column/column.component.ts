@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Optional } from '@angular/core';
 
 import { WidgetType, Widget } from '../widget.interface';
+import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 
 @Component({
   selector: 'app-column',
@@ -11,7 +12,7 @@ export class ColumnComponent {
 
   @ViewChild('content') content: Widget;
 
-  constructor() { }
+  constructor(@Optional() private builder: ReportBuilderComponent) { }
 
   toObject(): any {
     return {

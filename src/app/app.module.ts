@@ -7,6 +7,7 @@ import { LayoutComponent } from './widgets/layout/layout.component';
 import { PageBreakComponent } from './widgets/page-break/page-break.component';
 import { ContentComponent } from './widgets/content/content.component';
 import { ColumnComponent } from './widgets/column/column.component';
+import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ColumnComponent } from './widgets/column/column.component';
     LayoutComponent,
     PageBreakComponent,
     ContentComponent,
-    ColumnComponent
+    ColumnComponent,
+    PropertiesBarComponent
   ],
   imports: [
     BrowserModule

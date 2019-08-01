@@ -10,6 +10,7 @@ import { Widget } from '../widgets/widget.interface';
 export class ReportBuilderComponent {
 
   showOutput = false;
+  selectedWidget: Widget = null;
 
   // ContentComponents are viewed as Widgets to avoid circular dependencies:
   @ViewChild('header')  header:  Widget;
