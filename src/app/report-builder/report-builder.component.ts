@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Widget } from '../widgets/widget.interface';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-report-builder',
@@ -10,20 +10,16 @@ import { Widget } from '../widgets/widget.interface';
 export class ReportBuilderComponent {
 
   showOutput = false;
-  selectedWidget: Widget = null;
-
-  // ContentComponents are viewed as Widgets to avoid circular dependencies:
-  @ViewChild('header')  header:  Widget;
-  @ViewChild('content') content: Widget;
-  @ViewChild('footer')  footer:  Widget;
+  selectedWidget: WidgetComponent = null;
 
   constructor() {}
 
   toObject(): any {
-    return {
+    return {}
+    /*return {
       header: { content: this.header.toObject() },
       content: { content: this.content.toObject() },
       footer: { content: this.footer.toObject() },
-    };
+    };*/
   }
 }

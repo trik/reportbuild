@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Widget } from '../widgets/widget.interface';
-
-export var selectedWidget: Widget = null;
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-properties-bar',
@@ -11,7 +9,7 @@ export var selectedWidget: Widget = null;
 })
 export class PropertiesBarComponent {
 
-  @Input() widget: Widget;
+  @Input() widget: WidgetComponent;
 
   constructor() { }
 
