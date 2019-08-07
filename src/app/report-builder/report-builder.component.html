@@ -1,7 +1,5 @@
 <div class="editor">
-  <app-widget name="report"
-    [content]="[{name: 'header'}, {name: 'content'}, {name: 'footer'}]">
-  </app-widget>
+  <app-report class="widget" [report]="report"></app-report>
 </div>
 
 <div class="output-window widget">
@@ -11,7 +9,7 @@
     </a>
   </span>
   <textarea [style.display]="showOutput ? 'block' : 'none'"
-    readonly="true">{{ toObject() | json }}</textarea>
+    readonly="true">{{ report | json }}</textarea>
 </div>
 
 <app-properties-bar [widget]="selectedWidget"></app-properties-bar>

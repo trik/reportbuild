@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { WidgetComponent } from '../widget/widget.component';
+import { WidgetComponent } from '../widgets/widget/widget.component';
 
 @Component({
   selector: 'app-properties-bar',

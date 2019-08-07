@@ -1,0 +1,15 @@
+<span>
+  report - <a class="a-button" (click)="builder.selectedWidget = report">properties</a>
+</span>
+
+<div class="content">
+  <app-container class="widget" name="header"
+    [widget]="report.header" [widgetSet]="[0,2,3,9]">
+  </app-container>
+  <app-container class="widget" name="content"
+    [widget]="report.content" [widgetSet]="[0,1,2,3,4,5,6,9]">
+  </app-container>
+  <app-container class="widget" name="footer"
+    [widget]="report.footer" [widgetSet]="[0,2,3,9]">
+  </app-container>
+</div>

@@ -4,14 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ReportBuilderComponent } from './report-builder/report-builder.component';
 import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
-import { WidgetComponent } from './widget/widget.component';
+import { ContainerComponent } from './widgets/container/container.component';
+import { ReportComponent } from './widgets/report/report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportBuilderComponent,
     PropertiesBarComponent,
-    WidgetComponent
+    ContainerComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule
