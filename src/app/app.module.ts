@@ -6,6 +6,7 @@ import { ReportBuilderComponent } from './report-builder/report-builder.componen
 import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
 import { ContainerComponent } from './widgets/container/container.component';
 import { ReportComponent } from './widgets/report/report.component';
+import { PageBreakComponent } from './widgets/page-break/page-break.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ReportComponent } from './widgets/report/report.component';
     ReportBuilderComponent,
     PropertiesBarComponent,
     ContainerComponent,
-    ReportComponent
+    ReportComponent,
+    PageBreakComponent
   ],
   imports: [
     BrowserModule

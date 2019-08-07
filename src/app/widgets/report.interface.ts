@@ -6,7 +6,7 @@ export interface Report {
 };
 
 export interface Widget {
-  widgetType?: WT; // header, content, footer have undefined type
+  widgetType?: WT; // absent for header, content, footer
   visibility?: Visibility;
   styles?: Object;
   content?: Widget[];

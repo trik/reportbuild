@@ -2,23 +2,29 @@
   {{ name }} - <a class="a-button" (click)="builder.selectedWidget = widget">properties</a>
 </span>
 
-<div [class]="widget.widgetType === WT.Layout ? : 'layout-content' : 'content'">
+<div [class]="widget.widgetType === WT.Layout ? 'layout-content' : 'content'">
   <ng-container *ngFor="let w of widget.content">
     <ng-container [ngSwitch]="w.widgetType">
       <app-container *ngSwitchCase="WT.Layout" name="layout"
         class="widget" [widget]="w" [widgetSet]="[7]">
       </app-container>
+
       <app-page-break *ngSwitchCase="WT.PageBreak" [widget]="w"></app-page-break>
+
+      <app-container *ngSwitchCase="WT.Column" name="column"
+        class="widget" [widget]="w" [widgetSet]="[0,2,3,4,5,6,9]">
+      </app-container>
     </ng-container>
   </ng-container>
 
-  <div *ngIf="widgetSet(name).length > 0" class="add-widget-button">
-    <select (change)="addWidgetClicked($event)">
-      <option value="add widget">Add a widget:</option>
-      <option *ngFor="let w of widgetSet(name)" [value]="w">{{ w }}</option>
-    </select>
-  </div>
-  <div *ngIf="name === 'layout'" class="add-column-button" (click)="addWidget('column')">
+  <div *ngIf="widget.widgetType === WT.Layout" class="add-column-button"
+    (click)="addWidget(WT.Column)">
     add <br> column
+  </div>
+  <div *ngIf="widget.widgetType !== WT.Layout" class="add-widget-button">
+    <select (change)="addWidgetClicked($event)">
+      <option value="-1">Add a widget:</option>
+      <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
+    </select>
   </div>
 </div>

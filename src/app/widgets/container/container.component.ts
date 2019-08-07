@@ -13,28 +13,14 @@ import { Widget, WT } from '../report.interface';
 export class ContainerComponent {
 
   readonly WT = WT;
+  readonly widgetName = ['Layout', 'Page Break', 'Image', 'Text',
+    'Chart', 'Table', 'Map', 'Column', 'Formula', 'Image Container'];
 
   @Input() name: string;
   @Input() widget: Widget;
   @Input() widgetSet: WT[];
 
   constructor(@Optional() public builder: ReportBuilderComponent) { }
-
-  /*widgetSet(widgetName: string): string[] {
-    switch (widgetName) {
-    case 'layout':
-      return []; // columns can be added to layout, but we use a specialized path
-    case 'column':
-      return ['layout', 'image', 'text', 'chart', 'table', 'map', 'image container'];
-    case 'header':
-    case 'footer':
-      return ['layout', 'image', 'text', 'image container'];
-    case 'content':
-      return Object.keys(widgetTypeOf).filter(w => w !== 'column' && w !== 'formula');
-    default:
-      return [];
-    }
-  }*/
 
   addWidgetClicked(event: Event) {
     const select = event.srcElement as HTMLSelectElement;

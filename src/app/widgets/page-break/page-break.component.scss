@@ -1,0 +1,16 @@
+app-page-break {
+	width: 100%;
+	display: flex;
+	padding: 4px;
+}
+
+app-page-break > hr {
+	width: 50%;
+	border-top: none;
+	border-bottom: 1px dashed #222;
+}
+
+app-page-break > span {
+	width: 105px;
+	text-align: center;
+}

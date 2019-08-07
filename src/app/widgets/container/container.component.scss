@@ -8,17 +8,21 @@
 	min-height: 70px;
 }
 
-.layout > .content {
-	flex-direction: row;
+.content > * {
+	margin-bottom: 4px;
+}
+
+.layout-content {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 4px;
 	padding-right: 0;
 }
 
-.content > * {
-	margin-bottom: 4px !important;
-}
-
-.layout > .content > * {
-	margin-right: 4px !important;
+.layout-content > * {
+	margin-right: 4px;
 }
 
 .add-widget-button {
@@ -37,23 +41,6 @@
 	border: 1px dashed #aaa;
 	border-radius: 4px;
 	outline: none;
-}
-
-.layout-content {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	padding: 4px;
-}
-
-.layout-content-body {
-	width: 100%;
-	display: flex;
-}
-
-.layout-content-body > * {
-	margin-right: 4px;
 }
 
 .add-column-button {
