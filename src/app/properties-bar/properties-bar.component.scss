@@ -20,5 +20,21 @@ app-properties-bar .widget > span {
 }
 
 .bar-content {
-    padding: 10px 4px;
+    padding: 4px;
+    overflow-y: auto;
+}
+
+.styles-form {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+
+.styles-form > span {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.styles-form input {
+    width: 100%;
 }

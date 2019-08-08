@@ -10,7 +10,7 @@ import { WidgetComponent } from '../widgets/widget/widget.component';
 })
 export class ReportBuilderComponent {
 
-  selectedWidget: WidgetComponent;
+  selectedComponent: WidgetComponent;
   showOutput = false;
   report: Report = {header: {content: []}, content: {content: []}, footer: {content: []}};
 

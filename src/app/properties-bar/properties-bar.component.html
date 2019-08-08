@@ -1,13 +1,24 @@
 <div class="widget">
   <span>Widget properties</span>
 
-  <div class="bar-content" *ngIf="!widget">No widget selected</div>
-  <div class="bar-content" *ngIf="widget">something selected</div>
+  <div class="bar-content" *ngIf="!component">No widget selected</div>
+  <div class="bar-content" *ngIf="component">something selected</div>
 </div>
 
 <div class="widget">
   <span>Widget styles</span>
 
-  <div class="bar-content" *ngIf="!widget">No widget selected</div>
-  <div class="bar-content" *ngIf="widget">something selected</div>
+  <div class="bar-content" *ngIf="!component">No widget selected</div>
+  <div class="bar-content" *ngIf="component">
+    <div class="styles-form">
+      <span>property</span>
+      <span>value</span>
+      <ng-container *ngFor="let k of styleKeys()">
+        <input type="text" [name]="k" [value]="k">
+        <input type="text" [name]="styleVal(k)" [value]="styleVal(k)">
+      </ng-container>
+      <div><input type="text" (change)="onNewStyle($event)"></div>
+      <div style="padding: 2px 4px">press enter to add the new property</div>
+    </div>
+  </div>
 </div>

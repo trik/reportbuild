@@ -18,7 +18,7 @@ export class WidgetComponent {
 
   @HostListener('click', ['$event']) onClick(event: Event) {
     event.stopPropagation();
-    this.builder.selectedWidget = this;
+    this.builder.selectedComponent = this;
   }
 
 }
