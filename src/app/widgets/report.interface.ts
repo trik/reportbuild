@@ -1,16 +1,24 @@
 export interface Report {
   styles?: Object;
-  header: Widget;
-  content: Widget;
-  footer: Widget;
+  header: WidgetContainer;
+  content: WidgetContainer;
+  footer: WidgetContainer;
 };
 
 export interface Widget {
   widgetType?: WT; // absent for header, content, footer
   visibility?: Visibility;
   styles?: Object;
-  content?: Widget[];
 }
+
+// Implemented by header, content, footer, layout, column:
+export interface WidgetContainer extends Widget {
+  content: Widget[];
+}
+
+export interface Visibility {
+    condition: string;
+};
 
 export enum WT {
   Layout = 0,
@@ -23,8 +31,4 @@ export enum WT {
   Column,
   Formula,
   ImageContainer
-};
-
-export interface Visibility {
-    condition: string;
 };

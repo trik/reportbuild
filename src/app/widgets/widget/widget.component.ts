@@ -1,6 +1,6 @@
 import { Component, Input, HostListener } from '@angular/core';
 
-import { Widget, Report } from '../report.interface';
+import { Widget, WidgetContainer } from '../report.interface';
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 
 // Base class for widgets.
@@ -11,12 +11,10 @@ import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.co
 })
 export class WidgetComponent {
 
-  @Input() widget: Widget | Report;
+  @Input() widget: Widget;
+  @Input() parent: WidgetContainer;
 
-  constructor(
-    public builder: ReportBuilderComponent,
-    public parent: WidgetComponent
-  ) { }
+  constructor(public builder: ReportBuilderComponent) { }
 
   @HostListener('click', ['$event']) onClick(event: Event) {
     event.stopPropagation();

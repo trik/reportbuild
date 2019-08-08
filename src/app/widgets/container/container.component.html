@@ -3,16 +3,17 @@
   <span>{{ name }}</span>
 
   <div [class]="widget.widgetType === WT.Layout ? 'layout-content' : 'content'">
-    <ng-container *ngFor="let w of widget.content">
-      <ng-container [ngSwitch]="w.widgetType">
+    <ng-container *ngFor="let child of widget.content">
+      <ng-container [ngSwitch]="child.widgetType">
         <app-container *ngSwitchCase="WT.Layout" name="layout"
-          [widget]="w" [widgetSet]="[7]">
+          [widget]="child" [parent]="widget" [widgetSet]="[7]">
         </app-container>
 
-        <app-page-break *ngSwitchCase="WT.PageBreak" [widget]="w"></app-page-break>
+        <app-page-break *ngSwitchCase="WT.PageBreak"
+          [widget]="child" [parent]="widget"></app-page-break>
 
         <app-container *ngSwitchCase="WT.Column" name="column"
-          [widget]="w" [widgetSet]="[0,2,3,4,5,6,9]">
+          [widget]="child" [parent]="widget" [widgetSet]="[0,2,3,4,5,6,9]">
         </app-container>
       </ng-container>
     </ng-container>

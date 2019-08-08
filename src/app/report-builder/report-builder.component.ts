@@ -12,7 +12,7 @@ export class ReportBuilderComponent {
 
   selectedWidget: WidgetComponent;
   showOutput = false;
-  report: Report = {header: {}, content: {}, footer: {}};
+  report: Report = {header: {content: []}, content: {content: []}, footer: {content: []}};
 
   constructor() { }
 }

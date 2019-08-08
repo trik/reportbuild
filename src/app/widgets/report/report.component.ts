@@ -1,4 +1,4 @@
-import { Component, Optional, OnInit } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 import { WidgetComponent } from '../widget/widget.component';
@@ -9,19 +9,14 @@ import { Report } from '../report.interface';
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss']
 })
-export class ReportComponent extends WidgetComponent implements OnInit {
+export class ReportComponent extends WidgetComponent {
 
-  report: Report;
-
-  constructor(
-    @Optional() public builder: ReportBuilderComponent,
-    @Optional() public parent: WidgetComponent
-  ) {
-    super(builder, parent);
+  get report(): Report {
+    return this.widget as Report;
   }
 
-  ngOnInit() {
-    this.report = this.widget as Report;
+  constructor(@Optional() builder: ReportBuilderComponent) {
+    super(builder);
   }
 
 }
