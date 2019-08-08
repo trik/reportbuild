@@ -2,3 +2,19 @@ app-report {
     display: block;
     width: 100%;
 }
+
+app-report > .content {
+    padding: 0;
+}
+
+.report-title {
+    background-color: #abf;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.report-title-selected {
+    background-color: #aeb;
+}
