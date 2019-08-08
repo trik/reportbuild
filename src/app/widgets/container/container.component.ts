@@ -2,6 +2,7 @@ import { Component, Input, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { Widget, WT } from '../report.interface';
+import { WidgetComponent } from '../widget/widget.component';
 
 // ContainerComponent is used to render widgets of type:
 // header, content, footer, layout, column.
@@ -10,17 +11,21 @@ import { Widget, WT } from '../report.interface';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss']
 })
-export class ContainerComponent {
+export class ContainerComponent extends WidgetComponent {
 
   readonly WT = WT;
   readonly widgetName = ['Layout', 'Page Break', 'Image', 'Text',
     'Chart', 'Table', 'Map', 'Column', 'Formula', 'Image Container'];
 
   @Input() name: string;
-  @Input() widget: Widget;
   @Input() widgetSet: WT[];
 
-  constructor(@Optional() public builder: ReportBuilderComponent) { }
+  constructor(
+    @Optional() public builder: ReportBuilderComponent,
+    @Optional() public parent: WidgetComponent
+  ) {
+    super(builder, parent);
+  }
 
   addWidgetClicked(event: Event) {
     const select = event.srcElement as HTMLSelectElement;
@@ -33,16 +38,17 @@ export class ContainerComponent {
   }
 
   addWidget(wt: WT) {
-    if (!this.widget.content) {
-      this.widget.content = [];
+    const widget = this.widget as Widget;
+    if (!widget.content) {
+      widget.content = [];
     }
     if (wt === WT.Layout) {
-      this.widget.content.push({
+      widget.content.push({
         widgetType: WT.Layout,
         content: [{widgetType: WT.Column}, {widgetType: WT.Column}]
       });
     } else {
-      this.widget.content.push({widgetType: wt});
+      widget.content.push({widgetType: wt});
     }
   }
 

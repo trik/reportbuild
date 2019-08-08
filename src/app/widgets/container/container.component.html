@@ -1,30 +1,31 @@
-<span>
-  {{ name }} - <a class="a-button" (click)="builder.selectedWidget = widget">properties</a>
-</span>
+<div [ngClass]="{widget: true, 'widget-selected': builder.selectedWidget === this}">
 
-<div [class]="widget.widgetType === WT.Layout ? 'layout-content' : 'content'">
-  <ng-container *ngFor="let w of widget.content">
-    <ng-container [ngSwitch]="w.widgetType">
-      <app-container *ngSwitchCase="WT.Layout" name="layout"
-        class="widget" [widget]="w" [widgetSet]="[7]">
-      </app-container>
+  <span>{{ name }}</span>
 
-      <app-page-break *ngSwitchCase="WT.PageBreak" [widget]="w"></app-page-break>
+  <div [class]="widget.widgetType === WT.Layout ? 'layout-content' : 'content'">
+    <ng-container *ngFor="let w of widget.content">
+      <ng-container [ngSwitch]="w.widgetType">
+        <app-container *ngSwitchCase="WT.Layout" name="layout"
+          [widget]="w" [widgetSet]="[7]">
+        </app-container>
 
-      <app-container *ngSwitchCase="WT.Column" name="column"
-        class="widget" [widget]="w" [widgetSet]="[0,2,3,4,5,6,9]">
-      </app-container>
+        <app-page-break *ngSwitchCase="WT.PageBreak" [widget]="w"></app-page-break>
+
+        <app-container *ngSwitchCase="WT.Column" name="column"
+          [widget]="w" [widgetSet]="[0,2,3,4,5,6,9]">
+        </app-container>
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-  <div *ngIf="widget.widgetType === WT.Layout" class="add-column-button"
-    (click)="addWidget(WT.Column)">
-    add <br> column
-  </div>
-  <div *ngIf="widget.widgetType !== WT.Layout" class="add-widget-button">
-    <select (change)="addWidgetClicked($event)">
-      <option value="-1">Add a widget:</option>
-      <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
-    </select>
+    <div *ngIf="widget.widgetType === WT.Layout" class="add-column-button"
+      (click)="addWidget(WT.Column)">
+      add <br> column
+    </div>
+    <div *ngIf="widget.widgetType !== WT.Layout" class="add-widget-button">
+      <select (change)="addWidgetClicked($event)">
+        <option value="-1">Add a widget:</option>
+        <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
+      </select>
+    </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { Report, Widget } from '../widgets/report.interface';
+import { Report } from '../widgets/report.interface';
+import { WidgetComponent } from '../widgets/widget/widget.component';
 
 @Component({
   selector: 'app-report-builder',
@@ -9,7 +10,7 @@ import { Report, Widget } from '../widgets/report.interface';
 })
 export class ReportBuilderComponent {
 
-  selectedWidget: Widget;
+  selectedWidget: WidgetComponent;
   showOutput = false;
   report: Report = {header: {}, content: {}, footer: {}};
 

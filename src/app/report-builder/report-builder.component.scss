@@ -57,12 +57,15 @@ app-report-builder {
 }
 
 .widget:hover {
+	> .content > .add-widget-button, > .layout-content > .add-column-button {
+		visibility: visible;
+	}
+}
+
+.widget-selected {
 	border-color: #aeb;
 	> span {
 		background-color: #aeb;
-	}
-	> .content > .add-widget-button, > .layout-content > .add-column-button {
-		visibility: visible;
 	}
 }
 
