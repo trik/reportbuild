@@ -1,0 +1,6 @@
+<div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
+  <span>text</span>
+
+  <textarea placeholder="Enter HTML text here"
+    (change)="onTextChange($event)">{{ (widget | widgetAsText).htmlText }}</textarea>
+</div>

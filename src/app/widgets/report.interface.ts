@@ -32,3 +32,7 @@ export enum WT {
   Formula,
   ImageContainer
 };
+
+export interface Text extends Widget {
+  htmlText: string;
+};

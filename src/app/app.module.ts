@@ -8,7 +8,9 @@ import { ContainerComponent } from './widgets/container/container.component';
 import { ReportComponent } from './widgets/report/report.component';
 import { PageBreakComponent } from './widgets/page-break/page-break.component';
 import { WidgetComponent } from './widgets/widget/widget.component';
-import { widgetAsContainer } from './widgets/widget-as-container.pipe';
+import { widgetAsContainer } from './widgets/pipes/widget-as-container.pipe';
+import { widgetAsText } from './widgets/pipes/widget-as-text.pipe';
+import { TextComponent } from './widgets/text/text.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { widgetAsContainer } from './widgets/widget-as-container.pipe';
     ReportComponent,
     PageBreakComponent,
     WidgetComponent,
-    widgetAsContainer
+    widgetAsContainer,
+    widgetAsText,
+    TextComponent
   ],
   imports: [
     BrowserModule
