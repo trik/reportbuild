@@ -43,8 +43,10 @@ export class ContainerComponent extends WidgetComponent {
     switch (wt) {
     case WT.Layout:
       newWidget.content = [{widgetType: WT.Column}, {widgetType: WT.Column}];
+      break;
     case WT.Text:
       newWidget.htmlText = '';
+      break;
     }
     container.content.push(newWidget);
   }

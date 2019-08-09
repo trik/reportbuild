@@ -21,6 +21,15 @@ export class PropertiesBarComponent {
 
   constructor() { }
 
+  onVisibilityConditionChange(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    if (val === '') {
+      delete this.widget.visibility;
+    } else {
+      this.widget.visibility = {condition: val};
+    }
+  }
+
   styleKeys(): string[] {
     return Object.keys(this.component.widget.styles || {});
   }

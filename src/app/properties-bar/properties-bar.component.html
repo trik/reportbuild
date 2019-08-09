@@ -2,7 +2,14 @@
   <span>Widget properties</span>
 
   <div class="bar-content" *ngIf="!component">No widget selected</div>
-  <div class="bar-content" *ngIf="component">something selected</div>
+  <div class="bar-content" *ngIf="component">
+    <ng-container *ngIf="widget.widgetType !== undefined">
+      visibility condition:<br>
+      <input type="text" style="width: 100%; margin-top: 3px;"
+        [value]="widget.visibility?.condition || ''"
+        (change)="onVisibilityConditionChange($event)">
+    </ng-container>
+  </div>
 </div>
 
 <div class="styles widget">
