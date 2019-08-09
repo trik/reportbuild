@@ -1,7 +1,5 @@
 app-properties-bar {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 4px;
+    display: block;
     position: fixed;
     width: 300px;
     height: 100%;
@@ -9,6 +7,14 @@ app-properties-bar {
     right: 4px;
     padding-left: 4px;
     padding-bottom: 8px;
+}
+
+.properties {
+    margin-bottom: 4px;
+}
+
+.properties, .styles {
+    height: calc(50% - 2px);
 }
 
 app-properties-bar .widget {
