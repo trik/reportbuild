@@ -18,15 +18,17 @@
       </ng-container>
     </ng-container>
 
-    <div *ngIf="widget.widgetType === WT.Layout" class="add-column-button"
+    <div *ngIf="widget.widgetType === WT.Layout; else notLayout" class="add-column-button"
       (click)="addWidget(WT.Column)">
       add <br> column
     </div>
-    <div *ngIf="widget.widgetType !== WT.Layout" class="add-widget-button">
-      <select (change)="addWidgetClicked($event)">
-        <option value="-1">Add a widget:</option>
-        <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
-      </select>
-    </div>
+    <ng-template #notLayout>
+      <div class="add-widget-button">
+        <select (change)="addWidgetClicked($event)">
+          <option value="-1">Add a widget:</option>
+          <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
+        </select>
+      </div>
+    </ng-template>
   </div>
 </div>

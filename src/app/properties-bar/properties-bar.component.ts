@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 
 import { WidgetComponent } from '../widgets/widget/widget.component';
 import { Widget } from '../widgets/report.interface';
@@ -10,6 +10,8 @@ import { Widget } from '../widgets/report.interface';
   encapsulation: ViewEncapsulation.None
 })
 export class PropertiesBarComponent {
+
+  @ViewChild('stylesForm', {static: false}) stylesForm: ElementRef;
 
   @Input() component: WidgetComponent;
 
@@ -34,6 +36,14 @@ export class PropertiesBarComponent {
     }
     this.addNewStyle(input.value);
     input.value = '';
+    setTimeout(() => {
+      // Give focus to the value input of the added property:
+      const children = this.stylesForm.nativeElement.childNodes;
+      if (children.length-3 < 0) {
+        return
+      }
+      (children[children.length-3] as HTMLInputElement).focus();
+    }, 100);
   }
 
   addNewStyle(key: string) {
@@ -41,7 +51,22 @@ export class PropertiesBarComponent {
       this.widget.styles = {};
     }
     this.widget.styles[key] = '';
-    console.log(this.widget);
+  }
+
+  onStyleKeyChange(oldKey: string, event: Event) {
+    const newKey = (event.target as HTMLInputElement).value;
+    const styles = this.widget.styles;
+    const val = styles[oldKey];
+    delete styles[oldKey];
+    if (newKey === '') {
+      return;
+    }
+    styles[newKey] = val;
+  }
+
+  onStyleValChange(key: string, event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    this.widget.styles[key] = val;
   }
 
 }
