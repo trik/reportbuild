@@ -33,6 +33,10 @@ export enum WT {
   ImageContainer
 };
 
+export interface Layout extends WidgetContainer {
+  columns: number[];
+}
+
 export interface Text extends Widget {
   htmlText: string;
 };
