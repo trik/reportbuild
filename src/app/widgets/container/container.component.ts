@@ -24,6 +24,30 @@ export class ContainerComponent extends WidgetComponent {
     super(builder);
   }
 
+  columnIndex(): number {
+    const layout = this.parent as Layout;
+    if (!layout) {
+      throw new Error('columnIndex called on widget that is not a child of layout.');
+    }
+    return layout.content.indexOf(this.widget);
+  }
+
+  columnWidth(): number {
+    return (this.parent as Layout).columns[this.columnIndex()];
+  }
+
+  onColumnWidthChange(event: Event) {
+    let val = (event.target as HTMLInputElement).value;
+    if (val === '') {
+      val = '-1';
+    }
+    let width = Number(val);
+    if (isNaN(width)) {
+      width = -1;
+    }
+    (this.parent as Layout).columns[this.columnIndex()] = width;
+  }
+
   addWidgetClicked(event: Event) {
     const select = event.srcElement as HTMLSelectElement;
     const wt = Number(select.value);

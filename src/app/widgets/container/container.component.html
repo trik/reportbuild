@@ -1,6 +1,11 @@
 <div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
 
-  <span>{{ name }}</span>
+  <span>{{ name }}
+    <ng-container *ngIf="widget.widgetType === WT.Column">
+      - width: <input class="column-width-input" type="text" [value]="columnWidth()"
+        (change)="onColumnWidthChange($event)">
+    </ng-container>
+  </span>
 
   <div [class]="widget.widgetType === WT.Layout ? 'layout-content' : 'content'">
     <ng-container *ngFor="let child of (widget | widgetAsContainer).content">
@@ -21,17 +26,15 @@
       </ng-container>
     </ng-container>
 
-    <div *ngIf="widget.widgetType === WT.Layout; else notLayout" class="add-column-button"
+    <div *ngIf="widget.widgetType === WT.Layout" class="add-column-button"
       (click)="addWidget(WT.Column)">
       add <br> column
     </div>
-    <ng-template #notLayout>
-      <div class="add-widget-button">
-        <select (change)="addWidgetClicked($event)">
-          <option value="-1">Add a widget:</option>
-          <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
-        </select>
-      </div>
-    </ng-template>
+    <div *ngIf="widget.widgetType !== WT.Layout" class="add-widget-button">
+      <select (change)="addWidgetClicked($event)">
+        <option value="-1">Add a widget:</option>
+        <option *ngFor="let wt of widgetSet" [value]="wt">{{ widgetName[wt] }}</option>
+      </select>
+     </div>
   </div>
 </div>
