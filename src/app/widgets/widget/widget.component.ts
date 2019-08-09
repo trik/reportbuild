@@ -1,4 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
+import { Component, Input, HostListener, ViewEncapsulation } from '@angular/core';
 
 import { Widget, WidgetContainer } from '../report.interface';
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
@@ -7,7 +7,8 @@ import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.co
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.scss']
+  styleUrls: ['./widget.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WidgetComponent {
 

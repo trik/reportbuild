@@ -1,4 +1,4 @@
-import { Component, Input, Optional } from '@angular/core';
+import { Component, Input, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { WT, WidgetContainer } from '../report.interface';
@@ -8,7 +8,8 @@ import { WidgetComponent } from '../widget/widget.component';
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss']
+  styleUrls: ['./container.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ContainerComponent extends WidgetComponent {
 
