@@ -35,7 +35,20 @@ export enum WT {
 
 export interface Layout extends WidgetContainer {
   columns: number[];
-}
+};
+
+export interface Image extends Widget {
+  imageType: number;
+  url: string;
+  flag: string;
+  icon: string;
+};
+
+export const IT = {
+  Image: 0,
+  Flag: 1,
+  Icon: 2
+};
 
 export interface Text extends Widget {
   htmlText: string;

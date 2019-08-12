@@ -17,6 +17,9 @@
         <app-page-break *ngSwitchCase="WT.PageBreak"
           [widget]="child" [parent]="widget"></app-page-break>
 
+        <app-image *ngSwitchCase="WT.Image"
+          [widget]="child" [parent]="widget"></app-image>
+
         <app-text *ngSwitchCase="WT.Text"
           [widget]="child" [parent]="widget"></app-text>
 

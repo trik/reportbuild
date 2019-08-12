@@ -11,6 +11,8 @@ import { WidgetComponent } from './widgets/widget/widget.component';
 import { widgetAsContainer } from './widgets/pipes/widget-as-container.pipe';
 import { widgetAsText } from './widgets/pipes/widget-as-text.pipe';
 import { TextComponent } from './widgets/text/text.component';
+import { ImageComponent } from './widgets/image/image.component';
+import { widgetAsImage } from './widgets/pipes/widget-as-image';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { TextComponent } from './widgets/text/text.component';
     WidgetComponent,
     widgetAsContainer,
     widgetAsText,
-    TextComponent
+    widgetAsImage,
+    TextComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule

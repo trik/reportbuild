@@ -1,7 +1,7 @@
 import { Component, Input, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { WT, WidgetContainer, Layout } from '../report.interface';
+import { WT, WidgetContainer, Layout, IT } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 // ContainerComponent is used to render widgets of type WidgetContainer.
@@ -68,6 +68,10 @@ export class ContainerComponent extends WidgetComponent {
     case WT.Layout:
       newWidget.columns = [-1, -1];
       newWidget.content = [{widgetType: WT.Column}, {widgetType: WT.Column}];
+      break;
+    case WT.Image:
+      newWidget.imageType = IT.Image;
+      newWidget.url = '';
       break;
     case WT.Text:
       newWidget.htmlText = '';
