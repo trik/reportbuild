@@ -2,7 +2,7 @@
   <span>image - type:
     <select (change)="onImageTypeChange($event)">
       <ng-container *ngFor="let key of keys(IT)">
-        <ng-container *ngIf="IT[key] === (widget | widgetAsImage).imageType; else notSelected">
+        <ng-container *ngIf="IT[key] === image.imageType; else notSelected">
           <option [value]="IT[key]" selected>{{ key }}</option>
         </ng-container>
         <ng-template #notSelected>
@@ -12,5 +12,11 @@
     </select>
   </span>
 
-  <div class="content"></div>
+  <div class="content">
+    <div class="image-formula-input">
+      {{ formulaInputLabel() }}<input type="text" [value]="getFormula()"
+        (change)="onFormulaChange($event)">
+    </div>
+    <img src="assets/image404.png">
+  </div>
 </div>

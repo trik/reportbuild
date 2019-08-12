@@ -12,6 +12,10 @@ import { Text } from '../report.interface';
 })
 export class TextComponent extends WidgetComponent {
 
+  get text(): Text {
+    return this.widget as Text;
+  }
+
   constructor(@Optional() builder: ReportBuilderComponent) {
     super(builder);
   }

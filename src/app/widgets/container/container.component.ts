@@ -20,6 +20,10 @@ export class ContainerComponent extends WidgetComponent {
   @Input() name: string;
   @Input() widgetSet: WT[];
 
+  get container(): WidgetContainer {
+    return this.widget as WidgetContainer;
+  }
+
   constructor(@Optional() builder: ReportBuilderComponent) {
     super(builder);
   }
@@ -71,7 +75,7 @@ export class ContainerComponent extends WidgetComponent {
       break;
     case WT.Image:
       newWidget.imageType = IT.Image;
-      newWidget.url = '';
+      newWidget.url = {formula: ''};
       break;
     case WT.Text:
       newWidget.htmlText = '';

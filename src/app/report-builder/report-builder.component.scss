@@ -17,6 +17,16 @@ app-report-builder input, app-report-builder textarea {
 	font-size: 13px;
 }
 
+select {
+	font-size: 13px;
+	font-family: Arial, sans-serif;
+	height: 20px;
+	background-color: #eee;
+	border: 1px dashed #aaa;
+	border-radius: 4px;
+	outline: none;
+}
+
 .editor {
 	width: 100%;
 	height: 100%;

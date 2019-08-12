@@ -8,11 +8,8 @@ import { ContainerComponent } from './widgets/container/container.component';
 import { ReportComponent } from './widgets/report/report.component';
 import { PageBreakComponent } from './widgets/page-break/page-break.component';
 import { WidgetComponent } from './widgets/widget/widget.component';
-import { widgetAsContainer } from './widgets/pipes/widget-as-container.pipe';
-import { widgetAsText } from './widgets/pipes/widget-as-text.pipe';
 import { TextComponent } from './widgets/text/text.component';
 import { ImageComponent } from './widgets/image/image.component';
-import { widgetAsImage } from './widgets/pipes/widget-as-image';
 
 @NgModule({
   declarations: [
@@ -23,9 +20,6 @@ import { widgetAsImage } from './widgets/pipes/widget-as-image';
     ReportComponent,
     PageBreakComponent,
     WidgetComponent,
-    widgetAsContainer,
-    widgetAsText,
-    widgetAsImage,
     TextComponent,
     ImageComponent
   ],

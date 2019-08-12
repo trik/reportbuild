@@ -39,9 +39,13 @@ export interface Layout extends WidgetContainer {
 
 export interface Image extends Widget {
   imageType: number;
-  url: string;
-  flag: string;
-  icon: string;
+  url: Formula;
+  flag: Formula;
+  icon: Formula;
+};
+
+export interface Formula {
+  formula: string;
 };
 
 export const IT = {
