@@ -3,14 +3,14 @@ app-image-container {
     width: 100%;
 }
 
-.image-formula-input {
+.imagecontainer-formula-input {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image-formula-input > input {
+.imagecontainer-formula-input > input {
     font-family: "Lucida Console", Monaco, monospace;
     margin-left: 4px;
     width: 60%;

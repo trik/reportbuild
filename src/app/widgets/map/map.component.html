@@ -1,0 +1,18 @@
+<div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
+  <span>map - disabled:
+    <input type="checkbox" [checked]="map.disabled ? 'checked' : ''"
+      (change)="onDisabledChange($event)">
+  </span>
+
+  <div class="content">
+    <div class="map-inputs">
+      <span>coordinate formula: </span><input type="text" [value]="map.coordinate?.formula || ''"
+        (change)="onCoordinateChange($event)">
+      <span>tile layer: </span><input type="text" [value]="map.tileLayer || ''"
+        (change)="onTileLayerChange($event)">
+      <span>attribution: </span><input type="text" [value]="map.attribution || ''"
+        (change)="onAttributionChange($event)">
+    </div>
+    <img src="assets/image404.png">
+  </div>
+</div>

@@ -1,0 +1,19 @@
+app-map {
+    display: block;
+    width: 100%;
+}
+
+.map-inputs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 4px;
+}
+
+.map-inputs > span {
+    text-align: right;
+}
+
+.map-inputs > input {
+    font-family: "Lucida Console", Monaco, monospace;
+}

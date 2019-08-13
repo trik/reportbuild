@@ -71,7 +71,7 @@ export class ImageComponent extends WidgetComponent {
   onImageTypeChange(event: Event) {
     const formula = this.getFormula();
 
-    const select = event.srcElement as HTMLSelectElement;
+    const select = event.target as HTMLSelectElement;
     this.image.imageType = Number(select.value);
     
     this.setFormula(formula);

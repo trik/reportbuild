@@ -58,6 +58,13 @@ export interface Text extends Widget {
   htmlText: string;
 };
 
+export interface Map extends Widget {
+  coordinate: Formula;
+  tileLayer: string;
+  attribution: string;
+  disabled: boolean;
+};
+
 export interface ImageContainer extends Widget {
   imageType: number;
   urls?: Formula;

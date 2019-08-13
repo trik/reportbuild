@@ -53,7 +53,7 @@ export class ContainerComponent extends WidgetComponent {
   }
 
   addWidgetClicked(event: Event) {
-    const select = event.srcElement as HTMLSelectElement;
+    const select = event.target as HTMLSelectElement;
     const wt = Number(select.value);
     if (wt < 0) {
       return;
@@ -79,6 +79,12 @@ export class ContainerComponent extends WidgetComponent {
       break;
     case WT.Text:
       newWidget.htmlText = '';
+      break;
+    case WT.Map:
+      newWidget.coordinate = {formula: ''};
+      newWidget.tileLayer = '';
+      newWidget.attribution = '';
+      newWidget.disabled = false;
       break;
     case WT.Column:
       (container as Layout).columns.push(-1);

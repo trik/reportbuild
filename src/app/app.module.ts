@@ -11,6 +11,7 @@ import { WidgetComponent } from './widgets/widget/widget.component';
 import { TextComponent } from './widgets/text/text.component';
 import { ImageComponent } from './widgets/image/image.component';
 import { ImageContainerComponent } from './widgets/image-container/image-container.component';
+import { MapComponent } from './widgets/map/map.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ImageContainerComponent } from './widgets/image-container/image-contain
     WidgetComponent,
     TextComponent,
     ImageComponent,
-    ImageContainerComponent
+    ImageContainerComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule
