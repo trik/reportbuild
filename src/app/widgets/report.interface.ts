@@ -57,3 +57,10 @@ export const IT = {
 export interface Text extends Widget {
   htmlText: string;
 };
+
+export interface ImageContainer extends Widget {
+  imageType: number;
+  urls?: Formula;
+  flags?: Formula;
+  icons?: Formula;
+};

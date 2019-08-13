@@ -83,6 +83,10 @@ export class ContainerComponent extends WidgetComponent {
     case WT.Column:
       (container as Layout).columns.push(-1);
       break;
+    case WT.ImageContainer:
+      newWidget.imageType = IT.Image;
+      newWidget.urls = {formula: ''};
+      break;
     }
     container.content.push(newWidget);
   }

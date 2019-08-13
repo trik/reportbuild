@@ -10,6 +10,7 @@ import { PageBreakComponent } from './widgets/page-break/page-break.component';
 import { WidgetComponent } from './widgets/widget/widget.component';
 import { TextComponent } from './widgets/text/text.component';
 import { ImageComponent } from './widgets/image/image.component';
+import { ImageContainerComponent } from './widgets/image-container/image-container.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ImageComponent } from './widgets/image/image.component';
     PageBreakComponent,
     WidgetComponent,
     TextComponent,
-    ImageComponent
+    ImageComponent,
+    ImageContainerComponent
   ],
   imports: [
     BrowserModule
