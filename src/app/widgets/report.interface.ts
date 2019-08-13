@@ -39,9 +39,9 @@ export interface Layout extends WidgetContainer {
 
 export interface Image extends Widget {
   imageType: number;
-  url: Formula;
-  flag: Formula;
-  icon: Formula;
+  url?: Formula;
+  flag?: Formula;
+  icon?: Formula;
 };
 
 export interface Formula {
