@@ -58,6 +58,61 @@ export interface Text extends Widget {
   htmlText: string;
 };
 
+export interface Chart extends Widget {
+  chartType: ChartType;
+  labels: Formula;
+  dataset: ChartData[];
+  options: ChartOptions;
+};
+
+export enum ChartType {
+  Line = 0,
+  Bar,
+  HorizontalBar,
+  Radar,
+  Scatter,
+  Doughnut,
+  Pie,
+  PolarArea,
+  Bubble
+};
+
+export interface ChartData {
+  formula: Formula[];
+  aggregation: Aggregation;
+  label: string;
+  // TODO: things missing
+};
+
+export interface ChartOptions {
+
+};
+
+export interface Table extends Widget {
+  cellStyles?: any;
+  dataset: TableData[][];
+};
+
+export interface TableData {
+  formula: Formula;
+  aggregation: Aggregation;
+  label: string;
+  colspan?: number;
+  rowspan?: number;
+  style?: any;
+};
+
+export interface Aggregation {
+  aggregation: AggregationType;
+};
+
+export enum AggregationType {
+  None = 0,
+  Sum,
+  Average,
+  WeightedAverage
+};
+
 export interface Map extends Widget {
   coordinate: Formula;
   tileLayer: string;
