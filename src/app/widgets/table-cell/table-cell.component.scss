@@ -2,3 +2,12 @@ app-table-cell {
     display: block;
     width: 100%;
 }
+
+.table-cell {
+    border-radius: 3px;
+	border: 2px solid #abf;
+}
+
+.table-cell-selected {
+    border-color: #aeb;
+}

@@ -6,15 +6,15 @@
       <td *ngFor="let cell of row">
         <app-table-cell [widget]="cell" [parent]="table"></app-table-cell>
       </td>
-      <td *ngIf="i === 0" [attr.rowspan]="table.dataset.length">
-        <div class="add-column-button" (click)="addColumn()">
+      <td *ngIf="i === 0" [attr.rowspan]="table.dataset.length" style="width: 60px">
+        <div class="add-column-button" (click)="addColumn()" style="width: 55px">
           add <br> column
         </div>
       </td>
     </tr>
     <tr>
-      <td [attr.colspan]="(table.dataset[0] || []).length + 1">
-        <div class="add-widget-button">
+      <td [attr.colspan]="(table.dataset[0] || []).length">
+        <div class="add-widget-button" style="margin-bottom: 0">
           <a class="add-row-button" (click)="addRow()">
             add row
           </a>
