@@ -72,12 +72,6 @@ select {
 	background-color: #abf;
 }
 
-.widget:hover {
-	> .content > .add-widget-button, > .layout-content > .add-column-button {
-		visibility: visible;
-	}
-}
-
 .widget-selected {
 	border-color: #aeb;
 	> span {

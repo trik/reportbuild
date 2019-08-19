@@ -23,6 +23,9 @@
         <app-text *ngSwitchCase="WT.Text"
           [widget]="child" [parent]="widget"></app-text>
 
+        <app-table *ngSwitchCase="WT.Table"
+          [widget]="child" [parent]="widget"></app-table>
+
         <app-map *ngSwitchCase="WT.Map"
           [widget]="child" [parent]="widget"></app-map>
 

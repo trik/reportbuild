@@ -12,6 +12,8 @@ import { TextComponent } from './widgets/text/text.component';
 import { ImageComponent } from './widgets/image/image.component';
 import { ImageContainerComponent } from './widgets/image-container/image-container.component';
 import { MapComponent } from './widgets/map/map.component';
+import { TableComponent } from './widgets/table/table.component';
+import { TableCellComponent } from './widgets/table-cell/table-cell.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { MapComponent } from './widgets/map/map.component';
     PageBreakComponent,
     WidgetComponent,
     TextComponent,
+    TableComponent,
+    TableCellComponent,
     ImageComponent,
     ImageContainerComponent,
     MapComponent

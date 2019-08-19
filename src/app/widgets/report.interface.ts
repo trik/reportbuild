@@ -90,16 +90,24 @@ export interface ChartOptions {
 
 export interface Table extends Widget {
   cellStyles?: any;
-  dataset: TableData[][];
+  dataset: TableCell[][];
 };
 
-export interface TableData {
+export interface TableCell {
+  label: string;
   formula: Formula;
   aggregation: Aggregation;
-  label: string;
   colspan?: number;
   rowspan?: number;
   style?: any;
+};
+
+export function emptyTableCell(): TableCell {
+  return {
+    label: '',
+    formula: {formula: ''},
+    aggregation: {aggregation: AggregationType.None}
+  };
 };
 
 export interface Aggregation {

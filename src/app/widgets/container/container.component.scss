@@ -56,3 +56,12 @@ app-container {
 	cursor: pointer;
 	visibility: hidden;
 }
+
+.widget:hover {
+	> .content > .add-widget-button,
+	> .layout-content > .add-column-button,
+	> .table-content .add-widget-button,
+	> .table-content .add-column-button {
+		visibility: visible;
+	}
+}

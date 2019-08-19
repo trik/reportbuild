@@ -1,0 +1,25 @@
+<div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
+  <span>table</span>
+
+  <table class="table-content">
+    <tr *ngFor="let row of table.dataset; let i = index">
+      <td *ngFor="let cell of row">
+        <app-table-cell [widget]="cell" [parent]="table"></app-table-cell>
+      </td>
+      <td *ngIf="i === 0" [attr.rowspan]="table.dataset.length">
+        <div class="add-column-button" (click)="addColumn()">
+          add <br> column
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td [attr.colspan]="(table.dataset[0] || []).length + 1">
+        <div class="add-widget-button">
+          <a class="add-row-button" (click)="addRow()">
+            add row
+          </a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
