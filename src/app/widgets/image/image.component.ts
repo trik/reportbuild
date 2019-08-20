@@ -12,9 +12,6 @@ import { IT, Image } from '../report.interface';
 })
 export class ImageComponent extends WidgetComponent {
 
-  readonly IT = IT;
-  readonly keys = Object.keys;
-
   get image(): Image {
     return this.widget as Image;
   }

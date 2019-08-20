@@ -1,8 +1,9 @@
 <div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
   <span>image container - image type:
     <select (change)="onImageTypeChange($event)">
-      <option *ngFor="let key of keys(IT)" [value]="IT[key]"
-        [selected]="IT[key] === imageContainer.imageType ? 'selected' : ''">{{ key }}</option>
+      <option value="0" [selected]="imageContainer.imageType === 0 ? 'selected' : ''">Image</option>
+      <option value="1" [selected]="imageContainer.imageType === 1 ? 'selected' : ''">Flag</option>
+      <option value="2" [selected]="imageContainer.imageType === 2 ? 'selected' : ''">Icon</option>
     </select>
   </span>
 

@@ -38,7 +38,7 @@ export interface Layout extends WidgetContainer {
 };
 
 export interface Image extends Widget {
-  imageType: number;
+  imageType: IT;
   url?: Formula;
   flag?: Formula;
   icon?: Formula;
@@ -48,10 +48,10 @@ export interface Formula {
   formula: string;
 };
 
-export const IT = {
-  Image: 0,
-  Flag: 1,
-  Icon: 2
+export enum IT {
+  Image = 0,
+  Flag,
+  Icon
 };
 
 export interface Text extends Widget {
@@ -129,7 +129,7 @@ export interface Map extends Widget {
 };
 
 export interface ImageContainer extends Widget {
-  imageType: number;
+  imageType: IT;
   urls?: Formula;
   flags?: Formula;
   icons?: Formula;

@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 
 import { WidgetComponent } from '../widgets/widget/widget.component';
-import { Widget } from '../widgets/report.interface';
+import { Widget, TableCell } from '../widgets/report.interface';
 
 @Component({
   selector: 'app-properties-bar',
@@ -76,6 +76,19 @@ export class PropertiesBarComponent {
   onStyleValChange(key: string, event: Event) {
     const val = (event.target as HTMLInputElement).value;
     this.widget.styles[key] = val;
+  }
+
+  onFormulaChange(propertyName: string, event: Event) {
+    const formula = (event.target as HTMLInputElement).value;
+    this.widget[propertyName] = {formula};
+  }
+
+  onAggregationChange(event: Event) {
+    let aggregation = Number((event.target as HTMLInputElement).value);
+    if (!aggregation) {
+      aggregation = 0;
+    }
+    (this.widget as TableCell).aggregation = {aggregation};
   }
 
 }
