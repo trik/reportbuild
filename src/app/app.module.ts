@@ -14,6 +14,7 @@ import { ImageContainerComponent } from './widgets/image-container/image-contain
 import { MapComponent } from './widgets/map/map.component';
 import { TableComponent } from './widgets/table/table.component';
 import { TableCellComponent } from './widgets/table-cell/table-cell.component';
+import { StylesEditorComponent } from './styles-editor/styles-editor.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TableCellComponent } from './widgets/table-cell/table-cell.component';
     TableCellComponent,
     ImageComponent,
     ImageContainerComponent,
-    MapComponent
+    MapComponent,
+    StylesEditorComponent
   ],
   imports: [
     BrowserModule
