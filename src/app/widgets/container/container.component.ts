@@ -17,7 +17,6 @@ export class ContainerComponent extends WidgetComponent {
   readonly widgetName = ['Layout', 'Page Break', 'Image', 'Text',
     'Chart', 'Table', 'Map', 'Column', 'Formula', 'Image Container'];
 
-  @Input() name: string;
   @Input() widgetSet: WT[];
 
   get container(): WidgetContainer {

@@ -4,7 +4,7 @@
   <table class="table-content">
     <tr *ngFor="let row of table.dataset; let i = index">
       <td *ngFor="let cell of row">
-        <app-table-cell [widget]="cell" [parent]="table"></app-table-cell>
+        <app-table-cell name="cell" [widget]="cell" [parent]="table"></app-table-cell>
       </td>
       <td *ngIf="i === 0" [attr.rowspan]="table.dataset.length" style="width: 60px">
         <div class="add-column-button" (click)="addColumn()" style="width: 55px">

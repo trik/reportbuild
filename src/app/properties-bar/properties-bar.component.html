@@ -1,5 +1,5 @@
 <div class="properties widget">
-  <span>Widget properties</span>
+  <span>{{ component ? component.name : 'widget' }} properties</span>
 
   <div class="bar-content" *ngIf="!component">No widget selected</div>
   <div class="bar-content" *ngIf="component">
@@ -13,7 +13,7 @@
 </div>
 
 <div class="styles widget">
-  <span>Widget styles</span>
+  <span>{{ component ? component.name : 'widget' }} styles</span>
 
   <div class="bar-content" *ngIf="!component">No widget selected</div>
   <div class="bar-content" *ngIf="component">

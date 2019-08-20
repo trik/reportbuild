@@ -12,6 +12,7 @@ import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.co
 })
 export class WidgetComponent {
 
+  @Input() name: string;
   @Input() widget: Widget;
   @Input() parent: WidgetContainer;
 
