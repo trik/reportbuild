@@ -3,11 +3,12 @@ app-table-cell {
     width: 100%;
 }
 
-.table-cell {
-    border-radius: 3px;
-	border: 2px solid #abf;
+.table-cell input {
+    width: 100%;
+    border: 2px solid #abf;
+    outline: none;
 }
 
-.table-cell-selected {
+.table-cell-selected input {
     border-color: #aeb;
 }

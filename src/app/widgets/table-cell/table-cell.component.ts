@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { Component, ViewEncapsulation, Optional, Input } from '@angular/core';
 
 import { WidgetComponent } from '../widget/widget.component';
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
@@ -12,12 +12,21 @@ import { TableCell } from '../report.interface';
 })
 export class TableCellComponent extends WidgetComponent {
 
-  get tableCell(): TableCell {
+  get cell(): TableCell {
     return this.widget as TableCell;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent) {
     super(builder);
+  }
+
+  onFocus() {
+    this.builder.selectedComponent = this;
+  }
+
+  onLabelChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.cell.label = input.value;
   }
 
 }

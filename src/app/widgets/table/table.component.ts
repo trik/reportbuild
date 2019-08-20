@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { WidgetComponent } from '../widget/widget.component';
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
-import { Table, emptyTableCell } from '../report.interface';
+import { Table, emptyTableCell, TableCell } from '../report.interface';
 
 @Component({
   selector: 'app-table',
