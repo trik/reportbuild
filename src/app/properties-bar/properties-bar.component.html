@@ -8,16 +8,24 @@
       <input type="text" [value]="widget.visibility?.condition || ''"
         (change)="onVisibilityConditionChange($event)">
     </ng-container>
-    <ng-container *ngIf="component.name === 'cell'">
-      formula:<br>
-      <input type="text" [value]="widget.formula?.formula || ''"
-        (change)="onFormulaChange('formula', $event)"><br>
-      aggregation: <select (change)="onAggregationChange($event)" style="margin-top: 7px">
-        <option value="0" [selected]="widget.aggregation.aggregation === 0 ? 'selected' : ''">None</option>
-        <option value="1" [selected]="widget.aggregation.aggregation === 1 ? 'selected' : ''">Sum</option>
-        <option value="2" [selected]="widget.aggregation.aggregation === 2 ? 'selected' : ''">Average</option>
-        <option value="3" [selected]="widget.aggregation.aggregation === 3 ? 'selected' : ''">Weighted Average</option>
-      </select>
+
+    <ng-container [ngSwitch]="component.name">
+      <ng-container *ngSwitchCase="'table'">
+        <div style="margin-top: 7px">cell styles:</div>
+        <app-styles-editor [widget]="widget" stylesName="cellStyles"></app-styles-editor>
+      </ng-container>
+      
+      <ng-container *ngSwitchCase="'cell'">
+        formula:<br>
+        <input type="text" [value]="widget.formula?.formula || ''"
+          (change)="onFormulaChange('formula', $event)"><br>
+        aggregation: <select (change)="onAggregationChange($event)" style="margin-top: 7px">
+          <option value="0" [selected]="widget.aggregation.aggregation === 0 ? 'selected' : ''">None</option>
+          <option value="1" [selected]="widget.aggregation.aggregation === 1 ? 'selected' : ''">Sum</option>
+          <option value="2" [selected]="widget.aggregation.aggregation === 2 ? 'selected' : ''">Average</option>
+          <option value="3" [selected]="widget.aggregation.aggregation === 3 ? 'selected' : ''">Weighted Average</option>
+        </select>
+      </ng-container>
     </ng-container>
   </div>
 </div>
