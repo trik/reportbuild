@@ -15,7 +15,7 @@ export class PropertiesBarComponent {
 
   @Input() component: WidgetComponent;
 
-  get widget(): Widget {
+  get widget(): any {
     return this.component.widget;
   }
 

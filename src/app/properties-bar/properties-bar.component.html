@@ -23,7 +23,7 @@
 </div>
 
 <div class="styles widget">
-  <span>{{ component ? component.name : 'widget' }} styles</span>
+  <span>{{ component ? component.name : 'widget' }} {{ component?.name === 'cell' ? 'style' : 'styles' }}</span>
 
   <div class="bar-content" *ngIf="!component">No widget selected</div>
   <div class="bar-content" *ngIf="component">
