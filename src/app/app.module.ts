@@ -15,6 +15,7 @@ import { MapComponent } from './widgets/map/map.component';
 import { TableComponent } from './widgets/table/table.component';
 import { TableCellComponent } from './widgets/table-cell/table-cell.component';
 import { StylesEditorComponent } from './styles-editor/styles-editor.component';
+import { ChartComponent } from './widgets/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { StylesEditorComponent } from './styles-editor/styles-editor.component';
     PageBreakComponent,
     WidgetComponent,
     TextComponent,
+    ChartComponent,
     TableComponent,
     TableCellComponent,
     ImageComponent,

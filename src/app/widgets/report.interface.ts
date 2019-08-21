@@ -62,7 +62,7 @@ export interface Chart extends Widget {
   chartType: ChartType;
   labels: Formula;
   dataset: ChartData[];
-  options: any; // type defined by chart.js
+  options?: any; // type defined by chart.js
 };
 
 export enum ChartType {
@@ -84,6 +84,14 @@ export interface ChartData {
   options?: any; // AjfChartDatasetOptions
   datalabels?: any; // type defined by chart.js
 };
+
+export function emptyChartData(): ChartData {
+  return {
+    formula: [{formula: ''}],
+    aggregation: {aggregation: 0},
+    label: ''
+  };
+}
 
 export interface Table extends Widget {
   cellStyles?: any;

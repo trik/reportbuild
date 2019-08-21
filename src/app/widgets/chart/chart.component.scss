@@ -1,0 +1,17 @@
+app-chart {
+    display: block;
+    width: 100%;
+}
+
+.chart-labels-input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-labels-input > input {
+    font-family: "Lucida Console", Monaco, monospace;
+    margin-left: 4px;
+    width: 60%;
+}

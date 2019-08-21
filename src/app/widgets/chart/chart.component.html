@@ -1,0 +1,15 @@
+<div [ngClass]="{widget: true, 'widget-selected': builder.selectedComponent === this}">
+  <span>chart - type:
+    <select (change)="onChartTypeChange($event)">
+      <option *ngFor="let name of chartTypes; let i = index"
+        [value]="i" [selected]="chart.imageType === i ? 'selected' : ''">{{ name }}</option>
+    </select>
+  </span>
+
+  <div class="content">
+    <div class="chart-labels-input">
+      labels: <input type="text" [value]="chart.labels?.formula?.formula || ''"
+        (change)="onLabelsChange($event)">
+    </div>
+  </div>
+</div>
