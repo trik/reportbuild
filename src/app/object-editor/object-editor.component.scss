@@ -1,0 +1,16 @@
+app-object-editor {
+    display: block;
+    width: 100%;
+}
+
+app-object-editor textarea {
+    margin-top: 3px;
+    width: 100%;
+    font-family: "Lucida Console", Monaco, monospace;
+    resize: none;
+    background-color: red;
+}
+
+.valid-json {
+    background-color: green !important;
+}

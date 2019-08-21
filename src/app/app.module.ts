@@ -16,6 +16,7 @@ import { TableComponent } from './widgets/table/table.component';
 import { TableCellComponent } from './widgets/table-cell/table-cell.component';
 import { StylesEditorComponent } from './styles-editor/styles-editor.component';
 import { ChartComponent } from './widgets/chart/chart.component';
+import { ObjectEditorComponent } from './object-editor/object-editor.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ChartComponent } from './widgets/chart/chart.component';
     ImageComponent,
     ImageContainerComponent,
     MapComponent,
-    StylesEditorComponent
+    StylesEditorComponent,
+    ObjectEditorComponent
   ],
   imports: [
     BrowserModule

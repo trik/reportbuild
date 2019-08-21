@@ -10,6 +10,11 @@
     </ng-container>
 
     <ng-container [ngSwitch]="component.name">
+      <ng-container *ngSwitchCase="'chart'">
+        <div style="margin-top: 7px">options:</div>
+        <app-object-editor [widget]="widget" objectName="options"></app-object-editor>
+      </ng-container>
+
       <ng-container *ngSwitchCase="'table'">
         <div style="margin-top: 7px">cell styles:</div>
         <app-styles-editor [widget]="widget" stylesName="cellStyles"></app-styles-editor>
