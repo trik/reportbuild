@@ -1,2 +1,2 @@
-<textarea (change)="onObjectChange($event)" [ngClass]="{'valid-json': jsonIsValid}"
+<textarea (keyup)="keyUp.next($event)" [ngClass]="{'valid-json': jsonIsValid}"
   rows="13" placeholder="json object">{{ object ? (object | json) : '' }}</textarea>

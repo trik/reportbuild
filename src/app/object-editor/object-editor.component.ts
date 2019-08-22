@@ -1,6 +1,8 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { Widget } from '../widgets/report.interface';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-object-editor',
@@ -8,7 +10,10 @@ import { Widget } from '../widgets/report.interface';
   styleUrls: ['./object-editor.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ObjectEditorComponent {
+export class ObjectEditorComponent implements OnDestroy {
+
+  keyUp = new Subject<KeyboardEvent>();
+  private sub: Subscription;
 
   @Input() widget: Widget;
   @Input() objectName: string;
@@ -19,7 +24,11 @@ export class ObjectEditorComponent {
 
   jsonIsValid = true;
 
-  constructor() { }
+  constructor() {
+    this.sub = this.keyUp.pipe(debounceTime(200)).subscribe(e => {
+      this.onObjectChange(e);
+    });
+  }
 
   onObjectChange(event: Event) {
     const text = (event.target as HTMLTextAreaElement).value;
@@ -37,6 +46,10 @@ export class ObjectEditorComponent {
     }
     this.object = o;
     this.jsonIsValid = true;
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }
