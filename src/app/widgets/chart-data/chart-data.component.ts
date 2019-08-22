@@ -20,10 +20,6 @@ export class ChartDataComponent extends WidgetComponent {
     super(builder);
   }
 
-  onFocus() {
-    this.builder.selectedComponent = this;
-  }
-
   onLabelChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.data.label = input.value;

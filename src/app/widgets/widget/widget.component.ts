@@ -23,4 +23,9 @@ export class WidgetComponent {
     this.builder.selectedComponent = this;
   }
 
+  @HostListener('focusin', ['$event']) onFocusIn(event: Event) {
+    event.stopPropagation();
+    this.builder.selectedComponent = this;
+  }
+
 }

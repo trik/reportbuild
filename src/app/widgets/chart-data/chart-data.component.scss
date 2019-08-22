@@ -3,13 +3,13 @@ app-chart-data {
     width: 100%;
 }
 
-.chart-data input {
-    width: 60%;
+.chart-data {
+    width: 100%;
+    display: flex;
     border: 2px solid #abf;
     border-radius: 2px;
-    outline: none;
 }
 
-.chart-data-selected input {
+.chart-data-selected {
     border-color: #aeb;
 }
