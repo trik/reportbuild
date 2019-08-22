@@ -34,3 +34,13 @@ app-properties-bar .widget > span {
     width: 100%;
     margin-top: 3px;
 }
+
+.object-name {
+    cursor: pointer;
+    text-decoration: underline;
+    color: grey;
+}
+
+.object-name-selected {
+    color: black !important;
+}

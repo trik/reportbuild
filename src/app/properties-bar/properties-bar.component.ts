@@ -11,6 +11,8 @@ import { TableCell } from '../widgets/report.interface';
 })
 export class PropertiesBarComponent {
 
+  objectName = 'options';
+
   @Input() component: WidgetComponent;
 
   get widget(): any {
