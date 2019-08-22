@@ -1,0 +1,15 @@
+app-chart-data {
+    display: block;
+    width: 100%;
+}
+
+.chart-data input {
+    width: 60%;
+    border: 2px solid #abf;
+    border-radius: 2px;
+    outline: none;
+}
+
+.chart-data-selected input {
+    border-color: #aeb;
+}

@@ -1,0 +1,4 @@
+<div [ngClass]="{'chart-data': true, 'chart-data-selected': builder.selectedComponent === this}">
+  <input type="text" placeholder="data label" [value]="data.label || ''"
+    (change)="onLabelChange($event)" (focus)="onFocus()">
+</div>

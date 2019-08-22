@@ -11,5 +11,12 @@
       labels: <input type="text" [value]="chart.labels?.formula || ''"
         (change)="onLabelsChange($event)">
     </div>
+    dataset:<br>
+    <app-chart-data *ngFor="let data of chart.dataset"
+      name="data" [widget]="data" [parent]="chart"></app-chart-data>
+
+    <div class="add-widget-button">
+      <a class="add-data-button" (click)="addData()">add data</a>
+    </div>
   </div>
 </div>

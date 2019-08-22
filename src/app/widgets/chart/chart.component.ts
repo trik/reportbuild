@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { WidgetComponent } from '../widget/widget.component';
 import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
-import { Chart } from '../report.interface';
+import { Chart, emptyChartData } from '../report.interface';
 
 @Component({
   selector: 'app-chart',
@@ -30,6 +30,10 @@ export class ChartComponent extends WidgetComponent {
   onLabelsChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.chart.labels = {formula: input.value};
+  }
+
+  addData() {
+    this.chart.dataset.push(emptyChartData());
   }
 
 }

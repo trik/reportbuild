@@ -17,6 +17,7 @@ import { TableCellComponent } from './widgets/table-cell/table-cell.component';
 import { StylesEditorComponent } from './styles-editor/styles-editor.component';
 import { ChartComponent } from './widgets/chart/chart.component';
 import { ObjectEditorComponent } from './object-editor/object-editor.component';
+import { ChartDataComponent } from './widgets/chart-data/chart-data.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ObjectEditorComponent } from './object-editor/object-editor.component';
     WidgetComponent,
     TextComponent,
     ChartComponent,
+    ChartDataComponent,
     TableComponent,
     TableCellComponent,
     ImageComponent,
