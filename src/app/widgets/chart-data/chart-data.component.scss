@@ -13,3 +13,8 @@ app-chart-data {
 .chart-data-selected {
     border-color: #aeb;
 }
+
+.chart-data input, .chart-data select {
+    height: 23px;
+    outline: none;
+}

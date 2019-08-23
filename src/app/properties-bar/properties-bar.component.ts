@@ -36,10 +36,7 @@ export class PropertiesBarComponent {
   }
 
   onAggregationChange(event: Event) {
-    let aggregation = Number((event.target as HTMLInputElement).value);
-    if (!aggregation) {
-      aggregation = 0;
-    }
+    let aggregation = Number((event.target as HTMLSelectElement).value);
     (this.widget as TableCell).aggregation = {aggregation};
   }
 

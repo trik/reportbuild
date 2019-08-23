@@ -1,4 +1,13 @@
 <div [ngClass]="{'chart-data': true, 'chart-data-selected': builder.selectedComponent === this}">
   <input type="text" placeholder="data label" style="width: 25%"
     [value]="data.label || ''" (change)="onLabelChange($event)">
+  <div style="width: 50%">
+    <input *ngFor="let f of data.formula; let i = index"
+      type="text" placeholder="formula" style="width: 100%" class="monospace"
+      [value]="f.formula || ''" (change)="onFormulaChange(i, $event)">
+  </div>
+  <select style="width: 25%" (change)="onAggregationChange($event)">
+    <option *ngFor="let name of aggregationTypes; let i = index"
+    [value]="i" [selected]="data.aggregation.aggregation === i ? 'selected' : ''">{{ name }}</option>
+  </select>
 </div>

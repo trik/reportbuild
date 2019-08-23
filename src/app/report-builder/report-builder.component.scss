@@ -11,6 +11,10 @@ app-report-builder {
 	font-size: 13px;
 }
 
+.monospace {
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
 app-report-builder input, app-report-builder textarea {
 	// Firefox needs this.
 	font-family: Arial, sans-serif;
