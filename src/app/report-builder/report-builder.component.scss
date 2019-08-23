@@ -43,12 +43,15 @@ select {
 	margin-bottom: 4px;
 }
 
-.output-window {
-	border-color: #ec4 !important;
+.output-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #ec4 !important;
 }
 
-.output-window > span {
-	background-color: #ec4 !important;
+.output-window {
+	border-color: #ec4 !important;
 }
 
 .output-window > textarea {

@@ -3,11 +3,15 @@
 </div>
 
 <div class="output-window widget">
-  <span>
-    output - <a class="a-button" (click)="showOutput = !showOutput">
-      {{ showOutput ? 'hide' : 'show' }}
-    </a>
-  </span>
+  <div class="output-header">
+    <span>
+      output - <a class="a-button" (click)="showOutput = !showOutput">
+      {{ showOutput ? 'hide' : 'show' }}</a>
+    </span>
+    <div>
+      load json: <input type="file" accept=".json" (change)="onLoadJson($event)">
+    </div>
+  </div>
   <textarea [style.display]="showOutput ? 'block' : 'none'"
     readonly="true">{{ report | json }}</textarea>
 </div>
