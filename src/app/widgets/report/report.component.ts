@@ -1,8 +1,8 @@
 import { Component, Optional, ViewEncapsulation } from '@angular/core';
 
-import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
-import { WidgetComponent } from '../widget/widget.component';
+import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { Report } from '../report.interface';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-report',

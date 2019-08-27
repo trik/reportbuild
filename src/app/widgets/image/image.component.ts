@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, Optional } from '@angular/core';
 
-import { WidgetComponent } from '../widget/widget.component';
-import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
+import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { IT, Image } from '../report.interface';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-image',
@@ -70,7 +70,7 @@ export class ImageComponent extends WidgetComponent {
 
     const select = event.target as HTMLSelectElement;
     this.image.imageType = Number(select.value);
-    
+
     this.setFormula(formula);
   }
 
