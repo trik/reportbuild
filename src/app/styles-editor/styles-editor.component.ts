@@ -1,6 +1,5 @@
+import { AjfWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
-
-import { Widget } from '../widgets/report.interface';
 
 @Component({
   selector: 'app-styles-editor',

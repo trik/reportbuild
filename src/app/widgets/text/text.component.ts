@@ -1,7 +1,7 @@
+import { AjfTextWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Text } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class TextComponent extends WidgetComponent {
   }
 
   onTextChange(event: Event) {
-    (this.widget as Text).htmlText = (event.target as HTMLTextAreaElement).value;
+    this.text.htmlText = (event.target as HTMLTextAreaElement).value;
   }
 
 }

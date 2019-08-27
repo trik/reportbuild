@@ -1,7 +1,7 @@
+import { AjfTableDataset } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { WidgetComponent } from '../widgets/widget/widget.component';
-import { TableCell } from '../widgets/report.interface';
 
 @Component({
   selector: 'app-properties-bar',

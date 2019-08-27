@@ -1,7 +1,9 @@
+import { AjfImageType } from '@ajf/core/image';
+import { AjfFormula } from '@ajf/core/models';
+import { AjfImageContainerWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { IT, ImageContainer } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -13,11 +15,11 @@ import { WidgetComponent } from '../widget/widget.component';
 })
 export class ImageContainerComponent extends WidgetComponent {
 
-  readonly IT = IT;
+  readonly IT = AjfImageType;
   readonly keys = Object.keys;
 
-  get imageContainer(): ImageContainer {
-    return this.widget as ImageContainer;
+  get imageContainer(): AjfImageContainerWidget {
+    return this.widget as AjfImageContainerWidget;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
@@ -26,11 +28,11 @@ export class ImageContainerComponent extends WidgetComponent {
 
   formulaInputLabel(): string {
     switch (this.imageContainer.imageType) {
-    case IT.Image:
+    case AjfImageType.Image:
       return 'urls formula: ';
-    case IT.Flag:
+    case AjfImageType.Flag:
       return 'flags formula: ';
-    case IT.Icon:
+    case AjfImageType.Icon:
       return 'icons formula: ';
     default:
       throw new Error('unknown image type');
@@ -38,30 +40,32 @@ export class ImageContainerComponent extends WidgetComponent {
   }
 
   getFormula(): string {
+    // TODO: urls, flags and icons could be arrays
     switch (this.imageContainer.imageType) {
-    case IT.Image:
-      return this.imageContainer.urls.formula;
-    case IT.Flag:
-      return this.imageContainer.flags.formula;
-    case IT.Icon:
-      return this.imageContainer.icons.formula;
+    case AjfImageType.Image:
+      return (this.imageContainer.urls as AjfFormula).formula;
+    case AjfImageType.Flag:
+      return (this.imageContainer.flags as AjfFormula).formula;
+    case AjfImageType.Icon:
+      return (this.imageContainer.icons as AjfFormula).formula;
     default:
       throw new Error('unknown image type');
     }
   }
 
   setFormula(formula: string) {
+    // TODO: urls, flags and icons could be arrays
     delete this.imageContainer.urls;
     delete this.imageContainer.flags;
     delete this.imageContainer.icons;
     switch (this.imageContainer.imageType) {
-    case IT.Image:
+    case AjfImageType.Image:
       this.imageContainer.urls = {formula};
       return;
-    case IT.Flag:
+    case AjfImageType.Flag:
       this.imageContainer.flags = {formula};
       return;
-    case IT.Icon:
+    case AjfImageType.Icon:
       this.imageContainer.icons = {formula};
       return;
     default:

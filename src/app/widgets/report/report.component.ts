@@ -1,7 +1,7 @@
+import { AjfReport } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Report } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({

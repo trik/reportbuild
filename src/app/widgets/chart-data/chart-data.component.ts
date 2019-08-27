@@ -1,7 +1,7 @@
+import { AjfChartDataset } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { ChartData } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -15,8 +15,8 @@ export class ChartDataComponent extends WidgetComponent {
 
   readonly aggregationTypes = ['None', 'Sum', 'Average', 'Weighted Average'];
 
-  get data(): ChartData {
-    return this.widget as ChartData;
+  get data(): AjfChartDataset {
+    return this.widget as any as AjfChartDataset;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {

@@ -1,8 +1,9 @@
+import { AjfChartWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
-import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Chart, emptyChartData } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
+import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
+import { emptyChartData } from '../report.interface';
 
 @Component({
   selector: 'app-chart',
@@ -15,8 +16,8 @@ export class ChartComponent extends WidgetComponent {
 
   readonly chartTypes = ['Line', 'Bar', 'Horizontal Bar', 'Radar', 'Scatter', 'Doughnut', 'Pie', 'Polar Area', 'Bubble'];
 
-  get chart(): Chart {
-    return this.widget as Chart;
+  get chart(): AjfChartWidget {
+    return this.widget as AjfChartWidget;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {

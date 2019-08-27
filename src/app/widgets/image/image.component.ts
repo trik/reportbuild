@@ -1,7 +1,8 @@
+import { AjfImageType } from '@ajf/core/image';
+import { AjfImageWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { IT, Image } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -13,8 +14,8 @@ import { WidgetComponent } from '../widget/widget.component';
 })
 export class ImageComponent extends WidgetComponent {
 
-  get image(): Image {
-    return this.widget as Image;
+  get image(): AjfImageWidget {
+    return this.widget as AjfImageWidget;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
@@ -23,11 +24,11 @@ export class ImageComponent extends WidgetComponent {
 
   formulaInputLabel(): string {
     switch (this.image.imageType) {
-    case IT.Image:
+    case AjfImageType.Image:
       return 'url formula: ';
-    case IT.Flag:
+    case AjfImageType.Flag:
       return 'flag formula: ';
-    case IT.Icon:
+    case AjfImageType.Icon:
       return 'icon formula: ';
     default:
       throw new Error('unknown image type');
@@ -36,11 +37,11 @@ export class ImageComponent extends WidgetComponent {
 
   getFormula(): string {
     switch (this.image.imageType) {
-    case IT.Image:
+    case AjfImageType.Image:
       return this.image.url.formula;
-    case IT.Flag:
+    case AjfImageType.Flag:
       return this.image.flag.formula;
-    case IT.Icon:
+    case AjfImageType.Icon:
       return this.image.icon.formula;
     default:
       throw new Error('unknown image type');
@@ -67,13 +68,13 @@ export class ImageComponent extends WidgetComponent {
     delete this.image.flag;
     delete this.image.icon;
     switch (this.image.imageType) {
-    case IT.Image:
+    case AjfImageType.Image:
       this.image.url = {formula};
       return;
-    case IT.Flag:
+    case AjfImageType.Flag:
       this.image.flag = {formula};
       return;
-    case IT.Icon:
+    case AjfImageType.Icon:
       this.image.icon = {formula};
       return;
     default:
