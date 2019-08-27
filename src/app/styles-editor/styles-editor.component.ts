@@ -15,11 +15,14 @@ export class StylesEditorComponent {
   @Input() widget: Widget;
   @Input() stylesName: string;
 
-  get styles() { return this.widget[this.stylesName] }
-  set styles(s: any) { this.widget[this.stylesName] = s }
-  deleteStyles() { delete this.widget[this.stylesName] }
+  get styles() { return this.widget[this.stylesName]; }
+  set styles(s: any) { this.widget[this.stylesName] = s; }
 
   constructor() { }
+
+  deleteStyles() {
+    delete this.widget[this.stylesName];
+  }
 
   styleKeys(): string[] {
     return Object.keys(this.styles || {});
@@ -32,17 +35,17 @@ export class StylesEditorComponent {
   onNewStyle(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.value === '') {
-      return
+      return;
     }
     this.addNewStyle(input.value);
     input.value = '';
     setTimeout(() => {
       // Give focus to the value input of the added property:
       const children = this.stylesForm.nativeElement.childNodes;
-      if (children.length-3 < 0) {
-        return
+      if (children.length - 3 < 0) {
+        return;
       }
-      (children[children.length-3] as HTMLInputElement).focus();
+      (children[children.length - 3] as HTMLInputElement).focus();
     }, 100);
   }
 

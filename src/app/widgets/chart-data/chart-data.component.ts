@@ -33,7 +33,7 @@ export class ChartDataComponent extends WidgetComponent {
   }
 
   onAggregationChange(event: Event) {
-    let aggregation = Number((event.target as HTMLSelectElement).value);
+    const aggregation = Number((event.target as HTMLSelectElement).value);
     this.data.aggregation = {aggregation};
   }
 
