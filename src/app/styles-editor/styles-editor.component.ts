@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 
 import { Widget } from '../widgets/report.interface';
 
@@ -6,22 +6,38 @@ import { Widget } from '../widgets/report.interface';
   selector: 'app-styles-editor',
   templateUrl: './styles-editor.component.html',
   styleUrls: ['./styles-editor.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StylesEditorComponent {
 
   @ViewChild('stylesForm', {static: true}) stylesForm: ElementRef;
 
-  @Input() widget: Widget;
-  @Input() stylesName: string;
+  private pWidget: Widget;
+  get widget(): Widget { return this.pWidget; }
+  @Input() set widget(widget: Widget) {
+    this.pWidget = widget;
+    this.cdr.markForCheck();
+  }
 
-  get styles() { return this.widget[this.stylesName]; }
-  set styles(s: any) { this.widget[this.stylesName] = s; }
+  private pStylesName: string;
+  get stylesName(): string { return this.pStylesName; }
+  @Input() set stylesName(stylesName: string) {
+    this.pStylesName = stylesName;
+    this.cdr.markForCheck();
+  }
 
-  constructor() { }
+  get styles() { return this.widget[this.stylesName] }
+  set styles(s: any) {
+    this.widget[this.stylesName] = s;
+    this.cdr.markForCheck();
+  }
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   deleteStyles() {
     delete this.widget[this.stylesName];
+    this.cdr.markForCheck();
   }
 
   styleKeys(): string[] {
@@ -45,7 +61,8 @@ export class StylesEditorComponent {
       if (children.length - 3 < 0) {
         return;
       }
-      (children[children.length - 3] as HTMLInputElement).focus();
+      (children[children.length-3] as HTMLInputElement).focus();
+      this.cdr.markForCheck();
     }, 100);
   }
 
@@ -54,6 +71,7 @@ export class StylesEditorComponent {
       this.styles = {};
     }
     this.styles[key] = '';
+    this.cdr.markForCheck();
   }
 
   onStyleKeyChange(oldKey: string, event: Event) {
@@ -68,11 +86,13 @@ export class StylesEditorComponent {
     } else {
       styles[newKey] = val;
     }
+    this.cdr.markForCheck();
   }
 
   onStyleValChange(key: string, event: Event) {
     const val = (event.target as HTMLInputElement).value;
     this.styles[key] = val;
+    this.cdr.markForCheck();
   }
 
 }

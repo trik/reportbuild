@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { ChartData } from '../report.interface';
@@ -8,7 +8,8 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-chart-data',
   templateUrl: './chart-data.component.html',
   styleUrls: ['./chart-data.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartDataComponent extends WidgetComponent {
 
@@ -18,23 +19,26 @@ export class ChartDataComponent extends WidgetComponent {
     return this.widget as ChartData;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   onLabelChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.data.label = input.value;
+    this.cdr.markForCheck();
   }
 
   onFormulaChange(i: number, event: Event) {
     const formula = (event.target as HTMLInputElement).value;
     this.data.formula[i] = {formula};
+    this.cdr.markForCheck();
   }
 
   onAggregationChange(event: Event) {
     const aggregation = Number((event.target as HTMLSelectElement).value);
     this.data.aggregation = {aggregation};
+    this.cdr.markForCheck();
   }
 
 }

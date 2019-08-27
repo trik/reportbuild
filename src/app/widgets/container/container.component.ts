@@ -1,7 +1,7 @@
-import { Component, Input, Optional, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { WT, WidgetContainer, Layout, IT, AggregationType, emptyTableCell, emptyChartData } from '../report.interface';
+import { WT, WidgetContainer, Layout, IT, emptyTableCell, emptyChartData } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 // ContainerComponent is used to render widgets of type WidgetContainer.
@@ -9,7 +9,8 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContainerComponent extends WidgetComponent {
 
@@ -23,8 +24,8 @@ export class ContainerComponent extends WidgetComponent {
     return this.widget as WidgetContainer;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   columnIndex(): number {
@@ -59,6 +60,7 @@ export class ContainerComponent extends WidgetComponent {
     }
     this.addWidget(wt);
     select.value = '-1';
+    this.cdr.markForCheck();
   }
 
   addWidget(wt: WT) {
@@ -102,6 +104,6 @@ export class ContainerComponent extends WidgetComponent {
       break;
     }
     container.content.push(newWidget);
+    this.cdr.markForCheck();
   }
-
 }

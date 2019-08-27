@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { IT, ImageContainer } from '../report.interface';
@@ -8,7 +8,8 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-image-container',
   templateUrl: './image-container.component.html',
   styleUrls: ['./image-container.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageContainerComponent extends WidgetComponent {
 
@@ -19,8 +20,8 @@ export class ImageContainerComponent extends WidgetComponent {
     return this.widget as ImageContainer;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   formulaInputLabel(): string {
@@ -66,6 +67,7 @@ export class ImageContainerComponent extends WidgetComponent {
     default:
       throw new Error('unknown image type');
     }
+    this.cdr.markForCheck();
   }
 
   onImageTypeChange(event: Event) {
@@ -75,11 +77,13 @@ export class ImageContainerComponent extends WidgetComponent {
     this.imageContainer.imageType = Number(select.value);
 
     this.setFormula(formula);
+    this.cdr.markForCheck();
   }
 
   onFormulaChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.setFormula(input.value);
+    this.cdr.markForCheck();
   }
 
 }

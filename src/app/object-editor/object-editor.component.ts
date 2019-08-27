@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { Widget } from '../widgets/report.interface';
 import { Subject, Subscription } from 'rxjs';
@@ -8,22 +8,37 @@ import { debounceTime } from 'rxjs/operators';
   selector: 'app-object-editor',
   templateUrl: './object-editor.component.html',
   styleUrls: ['./object-editor.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectEditorComponent implements OnDestroy {
 
   keyUp = new Subject<KeyboardEvent>();
   private sub: Subscription;
 
-  @Input() widget: Widget;
-  @Input() objectName: string;
+  private pWidget: Widget;
+  get widget(): Widget { return this.pWidget; }
+  @Input() set widget(widget: Widget) {
+    this.pWidget = widget;
+    this.cdr.markForCheck();
+  }
+
+  private pObjectName: string;
+  get objectName(): string { return this.pObjectName; }
+  @Input() set objectName(objectName: string) {
+    this.pObjectName = objectName;
+    this.cdr.markForCheck();
+  }
+
+  get object() { return this.widget[this.objectName] }
+  set object(o: any) {
+    this.widget[this.objectName] = o;
+    this.cdr.markForCheck();
+  }
 
   jsonIsValid = true;
 
-  get object() { return this.widget[this.objectName]; }
-  set object(o: any) { this.widget[this.objectName] = o; }
-
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     this.sub = this.keyUp.pipe(debounceTime(200)).subscribe(e => {
       this.onObjectChange(e);
     });
@@ -31,6 +46,7 @@ export class ObjectEditorComponent implements OnDestroy {
 
   deleteObject() {
     delete this.widget[this.objectName];
+    this.cdr.markForCheck();
   }
 
   onObjectChange(event: Event) {
@@ -49,6 +65,7 @@ export class ObjectEditorComponent implements OnDestroy {
     }
     this.object = o;
     this.jsonIsValid = true;
+    this.cdr.markForCheck();
   }
 
   ngOnDestroy() {
