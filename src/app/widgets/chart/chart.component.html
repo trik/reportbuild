@@ -8,7 +8,7 @@
 
   <div class="content">
     <div class="chart-labels-input">
-      labels: <input type="text" [value]="chart.labels?.formula || ''"
+      labels: <input type="text" [value]="getLabelsFormula()"
         (change)="onLabelsChange($event)">
     </div>
     dataset:<br>

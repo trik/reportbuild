@@ -1,3 +1,4 @@
+import { AjfFormula } from '@ajf/core/models';
 import { AjfChartWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
@@ -39,6 +40,11 @@ export class ChartComponent extends WidgetComponent {
   addData() {
     this.chart.dataset.push(emptyChartData());
     this.cdr.markForCheck();
+  }
+
+  // TODO: labels formula could be an array
+  getLabelsFormula(): string {
+    return (this.chart.labels as AjfFormula).formula || '';
   }
 
 }
