@@ -89,7 +89,8 @@ workflows:
 
   deploy_prod_build:
     jobs:
-      requires:
-        - lint
-        - unit_tests
-        - integration_tests
+      - deploy_prod_build:
+        requires:
+          - lint
+          - unit_tests
+          - integration_tests
