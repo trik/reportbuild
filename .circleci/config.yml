@@ -67,26 +67,20 @@ jobs:
       - *npm_install
 
       - run: npm run ci:build
-      - run: mkdir ~/.ssh
-      - run: echo $DEPLOY_SSH_KEY >> ~/.ssh/id_rsa
-      - run: chmod 600 ~/.ssh/id_rsa
-      - run: tar cfj - -C dist/reportbuild . | ssh gnucoopajfreportbuilder@ajf.rocks "tar xfj - -C ../../web"
+      - run: echo $DEPLOY_SSH_KEY >> ~/.ssh/deploy.key
+      - run: chmod 600 ~/.ssh/deploy.key
+      - run: tar cfj - -C dist/reportbuild . | ssh -i ~/.ssh/deploy.key gnucoopajfreportbuilder@ajf.rocks "tar xfj - -C ../../web"
 
 workflows:
   version: 2
 
-  lint:
-    jobs:
-      - lint
-
-  unit_tests:
-    jobs:
-      - unit_tests
-
-  integration_tests:
-    jobs:
-      - integration_tests
-
   deploy_prod_build:
     jobs:
-      - deploy_prod_build
+      - lint
+      - unit_tests
+      - integration_tests
+      - deploy_prod_build:
+          requires:
+            - lint
+            - unit_tests
+            - integration_tests
