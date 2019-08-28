@@ -1,0 +1,40 @@
+var_1: &docker_image "devgnucoop/ngcontainer:latest"
+var_2: &cache_key ajf-reportbuild-{{ checksum "package-lock.json" }}-ngcontainer
+
+var_3: &job_defaults
+  working_directory: ~/project
+  docker:
+    - image: *docker_image
+
+var_4: &checkout_code
+  checkout:
+    # After checkout, rebase on top of master. By default, PRs are not rebased on top of master,
+    # which we want. See https://discuss.circleci.com/t/1662
+    post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+
+var_5: &restore_cache
+  restore_cache:
+    key: *cache_key
+
+var_6: &save_cache
+  save_cache:
+    key: *cache_key
+    paths:
+      - "node_modules"
+
+var_7: &npm_install
+  run: npm install --dry-run
+
+version: 2
+
+jobs:
+
+  lint:
+    <<: *job_defaults
+    steps:
+      - *checkout_code
+      - *restore_cache
+      - *npm_install
+      - *save_cache
+
+      - run: npm run lint
