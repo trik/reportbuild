@@ -18,16 +18,19 @@ export class ObjectEditorComponent implements OnDestroy {
   @Input() widget: Widget;
   @Input() objectName: string;
 
-  get object() { return this.widget[this.objectName] }
-  set object(o: any) { this.widget[this.objectName] = o }
-  deleteObject() { delete this.widget[this.objectName] }
-
   jsonIsValid = true;
+
+  get object() { return this.widget[this.objectName]; }
+  set object(o: any) { this.widget[this.objectName] = o; }
 
   constructor() {
     this.sub = this.keyUp.pipe(debounceTime(200)).subscribe(e => {
       this.onObjectChange(e);
     });
+  }
+
+  deleteObject() {
+    delete this.widget[this.objectName];
   }
 
   onObjectChange(event: Event) {
@@ -40,7 +43,7 @@ export class ObjectEditorComponent implements OnDestroy {
     let o: any;
     try {
       o = JSON.parse(text);
-    } catch(_) {
+    } catch (_) {
       this.jsonIsValid = false;
       return;
     }

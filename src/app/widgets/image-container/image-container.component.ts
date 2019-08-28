@@ -73,7 +73,7 @@ export class ImageContainerComponent extends WidgetComponent {
 
     const select = event.target as HTMLSelectElement;
     this.imageContainer.imageType = Number(select.value);
-    
+
     this.setFormula(formula);
   }
 
