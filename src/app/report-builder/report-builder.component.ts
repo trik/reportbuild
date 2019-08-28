@@ -1,6 +1,6 @@
+import { AjfReport } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 
-import { Report } from '../widgets/report.interface';
 import { WidgetComponent } from '../widgets/widget/widget.component';
 
 @Component({
@@ -29,7 +29,11 @@ export class ReportBuilderComponent {
     this.cdr.markForCheck();
   }
 
-  report: Report = {header: {content: []}, content: {content: []}, footer: {content: []}};
+  report: AjfReport = {
+    header: {content: [], styles: {}},
+    content: {content: [], styles: {}},
+    footer: {content: [], styles: {}},
+  };
 
   constructor(private cdr: ChangeDetectorRef) { }
 

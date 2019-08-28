@@ -1,7 +1,7 @@
+import { AjfWidget, AjfWidgetWithContent } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, HostListener, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Widget, WidgetContainer } from '../report.interface';
 
 // Base class for widgets.
 @Component({
@@ -19,16 +19,16 @@ export class WidgetComponent {
     this.cdr.markForCheck();
   }
 
-  private pWidget: Widget;
-  get widget(): Widget { return this.pWidget; }
-  @Input() set widget(widget: Widget) {
+  private pWidget: AjfWidget;
+  get widget(): AjfWidget { return this.pWidget; }
+  @Input() set widget(widget: AjfWidget) {
     this.pWidget = widget;
     this.cdr.markForCheck();
   }
 
-  private pParent: WidgetContainer;
-  get parent(): WidgetContainer { return this.pParent; }
-  @Input() set parent(parent: WidgetContainer) {
+  private pParent: AjfWidgetWithContent;
+  get parent(): AjfWidgetWithContent { return this.pParent; }
+  @Input() set parent(parent: AjfWidgetWithContent) {
     this.pParent = parent;
     this.cdr.markForCheck();
   }

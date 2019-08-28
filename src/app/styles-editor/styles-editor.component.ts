@@ -1,6 +1,5 @@
+import { AjfWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
-
-import { Widget } from '../widgets/report.interface';
 
 @Component({
   selector: 'app-styles-editor',
@@ -13,9 +12,9 @@ export class StylesEditorComponent {
 
   @ViewChild('stylesForm', {static: true}) stylesForm: ElementRef;
 
-  private pWidget: Widget;
-  get widget(): Widget { return this.pWidget; }
-  @Input() set widget(widget: Widget) {
+  private pWidget: AjfWidget;
+  get widget(): AjfWidget { return this.pWidget; }
+  @Input() set widget(widget: AjfWidget) {
     this.pWidget = widget;
     this.cdr.markForCheck();
   }
@@ -61,7 +60,7 @@ export class StylesEditorComponent {
       if (children.length - 3 < 0) {
         return;
       }
-      (children[children.length-3] as HTMLInputElement).focus();
+      (children[children.length - 3] as HTMLInputElement).focus();
       this.cdr.markForCheck();
     }, 100);
   }

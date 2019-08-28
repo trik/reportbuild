@@ -1,7 +1,7 @@
+import { AjfTableDataset } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { WidgetComponent } from '../widgets/widget/widget.component';
-import { TableCell } from '../widgets/report.interface';
 
 @Component({
   selector: 'app-properties-bar',
@@ -45,8 +45,7 @@ export class PropertiesBarComponent {
 
   onAggregationChange(event: Event) {
     const aggregation = Number((event.target as HTMLSelectElement).value);
-    (this.widget as TableCell).aggregation = {aggregation};
+    (this.widget as AjfTableDataset).aggregation = {aggregation};
     this.cdr.markForCheck();
   }
-
 }

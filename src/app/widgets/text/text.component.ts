@@ -1,7 +1,7 @@
+import { AjfTextWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Text } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -12,8 +12,8 @@ import { WidgetComponent } from '../widget/widget.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextComponent extends WidgetComponent {
-  get text(): Text {
-    return this.widget as Text;
+  get text(): AjfTextWidget {
+    return this.widget as AjfTextWidget;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
@@ -21,7 +21,6 @@ export class TextComponent extends WidgetComponent {
   }
 
   onTextChange(event: Event) {
-    (this.widget as Text).htmlText = (event.target as HTMLTextAreaElement).value;
+    (this.widget as AjfTextWidget).htmlText = (event.target as HTMLTextAreaElement).value;
   }
-
 }

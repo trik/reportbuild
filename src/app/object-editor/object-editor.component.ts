@@ -1,6 +1,6 @@
+import { AjfWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
 
-import { Widget } from '../widgets/report.interface';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -16,9 +16,9 @@ export class ObjectEditorComponent implements OnDestroy {
   keyUp = new Subject<KeyboardEvent>();
   private sub: Subscription;
 
-  private pWidget: Widget;
-  get widget(): Widget { return this.pWidget; }
-  @Input() set widget(widget: Widget) {
+  private pWidget: AjfWidget;
+  get widget(): AjfWidget { return this.pWidget; }
+  @Input() set widget(widget: AjfWidget) {
     this.pWidget = widget;
     this.cdr.markForCheck();
   }

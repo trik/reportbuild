@@ -1,7 +1,9 @@
+import { AjfImageType } from '@ajf/core/image';
+import { AjfWidgetType, AjfLayoutWidget, AjfWidgetWithContent } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { WT, WidgetContainer, Layout, IT, emptyTableCell, emptyChartData } from '../report.interface';
+import { emptyTableCell, emptyChartData } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 // ContainerComponent is used to render widgets of type WidgetContainer.
@@ -14,14 +16,14 @@ import { WidgetComponent } from '../widget/widget.component';
 })
 export class ContainerComponent extends WidgetComponent {
 
-  readonly WT = WT;
+  readonly WT = AjfWidgetType;
   readonly widgetName = ['Layout', 'Page Break', 'Image', 'Text',
     'Chart', 'Table', 'Map', 'Column', 'Formula', 'Image Container'];
 
-  @Input() widgetSet: WT[];
+  @Input() widgetSet: AjfWidgetType[];
 
-  get container(): WidgetContainer {
-    return this.widget as WidgetContainer;
+  get container(): AjfWidgetWithContent {
+    return this.widget as AjfWidgetWithContent;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
@@ -29,7 +31,7 @@ export class ContainerComponent extends WidgetComponent {
   }
 
   columnIndex(): number {
-    const layout = this.parent as Layout;
+    const layout = this.parent as AjfLayoutWidget;
     if (!layout) {
       throw new Error('columnIndex called on widget that is not a child of layout.');
     }
@@ -37,7 +39,7 @@ export class ContainerComponent extends WidgetComponent {
   }
 
   columnWidth(): number {
-    return (this.parent as Layout).columns[this.columnIndex()];
+    return (this.parent as AjfLayoutWidget).columns[this.columnIndex()];
   }
 
   onColumnWidthChange(event: Event) {
@@ -49,7 +51,7 @@ export class ContainerComponent extends WidgetComponent {
     if (isNaN(width)) {
       width = -1;
     }
-    (this.parent as Layout).columns[this.columnIndex()] = width;
+    (this.parent as AjfLayoutWidget).columns[this.columnIndex()] = width;
   }
 
   addWidgetClicked(event: Event) {
@@ -63,43 +65,43 @@ export class ContainerComponent extends WidgetComponent {
     this.cdr.markForCheck();
   }
 
-  addWidget(wt: WT) {
-    const container = this.widget as WidgetContainer;
+  addWidget(wt: AjfWidgetType) {
+    const container = this.widget as AjfWidgetWithContent;
     if (!container.content) {
       container.content = [];
     }
     const newWidget: any = {widgetType: wt};
     switch (wt) {
-    case WT.Layout:
+    case AjfWidgetType.Layout:
       newWidget.columns = [-1, -1];
-      newWidget.content = [{widgetType: WT.Column}, {widgetType: WT.Column}];
+      newWidget.content = [{widgetType: AjfWidgetType.Column}, {widgetType: AjfWidgetType.Column}];
       break;
-    case WT.Image:
-      newWidget.imageType = IT.Image;
+    case AjfWidgetType.Image:
+      newWidget.imageType = AjfImageType.Image;
       newWidget.url = {formula: ''};
       break;
-    case WT.Text:
+    case AjfWidgetType.Text:
       newWidget.htmlText = '';
       break;
-    case WT.Chart:
+    case AjfWidgetType.Chart:
       newWidget.chartType = 0;
       newWidget.labels = {formula: ''};
       newWidget.dataset = [emptyChartData()];
       break;
-    case WT.Table:
+    case AjfWidgetType.Table:
       newWidget.dataset = [[emptyTableCell()]];
       break;
-    case WT.Map:
+    case AjfWidgetType.Map:
       newWidget.coordinate = {formula: ''};
       newWidget.tileLayer = '';
       newWidget.attribution = '';
       newWidget.disabled = false;
       break;
-    case WT.Column:
-      (container as Layout).columns.push(-1);
+    case AjfWidgetType.Column:
+      (container as AjfLayoutWidget).columns.push(-1);
       break;
-    case WT.ImageContainer:
-      newWidget.imageType = IT.Image;
+    case AjfWidgetType.ImageContainer:
+      newWidget.imageType = AjfImageType.Image;
       newWidget.urls = {formula: ''};
       break;
     }

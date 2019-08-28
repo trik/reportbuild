@@ -1,7 +1,7 @@
+import { AjfMapWidget } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Map } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -12,8 +12,8 @@ import { WidgetComponent } from '../widget/widget.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent extends WidgetComponent {
-  get map(): Map {
-    return this.widget as Map;
+  get map(): AjfMapWidget {
+    return this.widget as AjfMapWidget;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {

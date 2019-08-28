@@ -1,7 +1,7 @@
+import { AjfReport } from '@ajf/core/reports';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Optional, ViewEncapsulation } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
-import { Report } from '../report.interface';
 import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
@@ -12,12 +12,11 @@ import { WidgetComponent } from '../widget/widget.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportComponent extends WidgetComponent {
-  get report(): Report {
-    return this.widget as Report;
+  get report(): AjfReport {
+    return this.widget as AjfReport;
   }
 
   constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
     super(builder, cdr);
   }
-
 }
