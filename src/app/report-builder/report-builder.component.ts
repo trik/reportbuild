@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 
 import { Report } from '../widgets/report.interface';
 import { WidgetComponent } from '../widgets/widget/widget.component';
@@ -7,15 +7,31 @@ import { WidgetComponent } from '../widgets/widget/widget.component';
   selector: 'app-report-builder',
   templateUrl: './report-builder.component.html',
   styleUrls: ['./report-builder.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportBuilderComponent {
+  private pSelectedComponent: WidgetComponent;
+  get selectedComponent(): WidgetComponent { return this.pSelectedComponent; }
+  set selectedComponent(selectedComponent: WidgetComponent) {
+    const oldSelected = this.pSelectedComponent;
+    this.pSelectedComponent = selectedComponent;
+    this.cdr.markForCheck();
+    if (oldSelected != null) {
+      oldSelected.markForCheck();
+    }
+  }
 
-  selectedComponent: WidgetComponent;
-  showOutput = false;
+  private pShowOutput = false;
+  get showOutput(): boolean { return this.pShowOutput; }
+  set showOutput(showOutput: boolean) {
+    this.pShowOutput = showOutput;
+    this.cdr.markForCheck();
+  }
+
   report: Report = {header: {content: []}, content: {content: []}, footer: {content: []}};
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   onLoadJson(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
@@ -33,6 +49,7 @@ export class ReportBuilderComponent {
         return;
       }
       this.report = report;
+      this.cdr.markForCheck();
     };
     reader.readAsText(file);
   }

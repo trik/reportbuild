@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { Chart, emptyChartData } from '../report.interface';
@@ -8,7 +8,8 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent extends WidgetComponent {
 
@@ -18,22 +19,25 @@ export class ChartComponent extends WidgetComponent {
     return this.widget as Chart;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   onChartTypeChange(event: Event) {
     const select = event.target as HTMLSelectElement;
     this.chart.chartType = Number(select.value);
+    this.cdr.markForCheck();
   }
 
   onLabelsChange(event: Event) {
     const input = event.target as HTMLInputElement;
     this.chart.labels = {formula: input.value};
+    this.cdr.markForCheck();
   }
 
   addData() {
     this.chart.dataset.push(emptyChartData());
+    this.cdr.markForCheck();
   }
 
 }

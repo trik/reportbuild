@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { IT, Image } from '../report.interface';
@@ -8,7 +8,8 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageComponent extends WidgetComponent {
 
@@ -16,8 +17,8 @@ export class ImageComponent extends WidgetComponent {
     return this.widget as Image;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   formulaInputLabel(): string {
@@ -46,7 +47,22 @@ export class ImageComponent extends WidgetComponent {
     }
   }
 
-  setFormula(formula: string) {
+  onImageTypeChange(event: Event) {
+    const formula = this.getFormula();
+
+    const select = event.target as HTMLSelectElement;
+    this.image.imageType = Number(select.value);
+
+    this._setFormula(formula);
+    this.cdr.markForCheck();
+  }
+
+  onFormulaChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this._setFormula(input.value);
+  }
+
+  private _setFormula(formula: string) {
     delete this.image.url;
     delete this.image.flag;
     delete this.image.icon;
@@ -63,20 +79,6 @@ export class ImageComponent extends WidgetComponent {
     default:
       throw new Error('unknown image type');
     }
-  }
-
-  onImageTypeChange(event: Event) {
-    const formula = this.getFormula();
-
-    const select = event.target as HTMLSelectElement;
-    this.image.imageType = Number(select.value);
-
-    this.setFormula(formula);
-  }
-
-  onFormulaChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.setFormula(input.value);
   }
 
 }

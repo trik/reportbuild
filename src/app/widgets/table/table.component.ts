@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation, Optional } from '@angular/core';
 
 import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { Table, emptyTableCell, TableCell } from '../report.interface';
@@ -8,16 +8,16 @@ import { WidgetComponent } from '../widget/widget.component';
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent extends WidgetComponent {
-
   get table(): Table {
     return this.widget as Table;
   }
 
-  constructor(@Optional() builder: ReportBuilderComponent) {
-    super(builder);
+  constructor(@Optional() builder: ReportBuilderComponent, cdr: ChangeDetectorRef) {
+    super(builder, cdr);
   }
 
   numColumns(): number {
@@ -39,12 +39,13 @@ export class TableComponent extends WidgetComponent {
   addRow() {
     const dataset = this.table.dataset;
     dataset.push(dataset[0].map(_ => emptyTableCell()));
+    this.cdr.markForCheck();
   }
 
   addColumn() {
     for (const row of this.table.dataset) {
       row.push(emptyTableCell());
     }
+    this.cdr.markForCheck();
   }
-
 }
