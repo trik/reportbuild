@@ -38,3 +38,10 @@ jobs:
       - *save_cache
 
       - run: npm run lint
+
+workflows:
+  version: 2
+
+  lint:
+    jobs:
+      - lint
