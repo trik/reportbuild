@@ -69,6 +69,8 @@ jobs:
       - run: npm run ci:build
       - run: echo $DEPLOY_SSH_KEY >> ~/.ssh/deploy.key
       - run: chmod 600 ~/.ssh/deploy.key
+      - run: echo "$DEPLOY_HOST_SSH" >> ~/.ssh/known_hosts
+      - run: chmod 644 ~/.ssh/known_hosts
       - run: tar cfj - -C dist/reportbuild . | ssh -i ~/.ssh/deploy.key gnucoopajfreportbuilder@ajf.rocks "tar xfj - -C ../../web"
 
 workflows:
