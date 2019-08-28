@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, Optional } from '@angular/core';
 
-import { WidgetComponent } from '../widget/widget.component';
-import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
+import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { TableCell } from '../report.interface';
+import { WidgetComponent } from '../widget/widget.component';
 
 @Component({
   selector: 'app-table-cell',

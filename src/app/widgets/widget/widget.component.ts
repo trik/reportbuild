@@ -1,7 +1,7 @@
 import { Component, Input, HostListener, ViewEncapsulation } from '@angular/core';
 
+import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { Widget, WidgetContainer } from '../report.interface';
-import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 
 // Base class for widgets.
 @Component({

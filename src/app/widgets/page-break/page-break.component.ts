@@ -1,7 +1,7 @@
 import { Component, Input, Optional, ViewEncapsulation } from '@angular/core';
 
+import { ReportBuilderComponent } from '../../report-builder/report-builder.component';
 import { WidgetComponent } from '../widget/widget.component';
-import { ReportBuilderComponent } from 'src/app/report-builder/report-builder.component';
 
 @Component({
   selector: 'app-page-break',
